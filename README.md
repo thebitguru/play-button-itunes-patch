@@ -25,9 +25,12 @@ Author: Farhan Ahmad (<http://www.thebitguru.com/projects/iTunesPatch>)
 
 Change Log
 ----------
+    2013-05-11, fa: Added step to self-sign the modified binary. This should
+       prevent rcd from crashing on Mountain Lion.
+
     2011-09-03	Farhan Ahmad
      * Added Michael Winestock's info.
-	  http://www.linkedin.com/pub/michael-winestock/18/579/972
+	     http://www.linkedin.com/pub/michael-winestock/18/579/972
 
     2011-08-18	Farhan Ahmad
      * Added a fix to account for spaces in the directory where the patch is

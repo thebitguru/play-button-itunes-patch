@@ -15,6 +15,8 @@
 #     in the directory name.
 #  2011-09-03, fa: Added Michael's contact info 
 #     Michael Winestock  http://www.linkedin.com/pub/michael-winestock/18/579/972
+#  2013-05-11, fa: Added step to self-sign the modified binary. This should
+#     prevent rcd from crashing on Mountain Lion.
 #
 # Technical notes:
 #   Create a backup of the original file (cp rcd rcd_original_os).
@@ -116,6 +118,8 @@ echo " + Patching..."
 cd "`dirname \"$0\"`"
 ./edit_rcd_bin.py $rcd_path/rcd
 if [[ $? -eq 0 ]]; then
+  echo " + Regenerating the code signature..."
+  codesign -f -s - $rcd_path/rcd
 	echo " + Successfully patched the existing file."
 	echo
 	echo "Finished patching.  To verify: "
