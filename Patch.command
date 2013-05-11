@@ -8,22 +8,28 @@
 # Website: http://www.thebitguru.com/projects/iTunesPatch
 #
 # Revision history:
-#  2010-11-18, fa: Created
-#  2010-11-28, fa: Updated to use patch_bytes.py script instead of the previously
+#  2010-11-18, fa:
+#   * Created
+#  2010-11-28, fa:
+#   * Updated to use patch_bytes.py script instead of the previously
 #     used bsdiff/bspatch method.
-#  2011-08-18, fa: Added fix submitted by Michael Winestock to account for spaces
+#  2011-08-18, fa:
+#   * Added fix submitted by Michael Winestock to account for spaces
 #     in the directory name.
-#  2011-09-03, fa: Added Michael's contact info 
+#  2011-09-03, fa:
+#   * Added Michael's contact info 
 #     Michael Winestock  http://www.linkedin.com/pub/michael-winestock/18/579/972
-#  2013-05-11, fa: Added step to self-sign the modified binary. This should
+#  2013-05-11, fa:
+#   * Added step to self-sign the modified binary. This should
 #     prevent rcd from crashing on Mountain Lion.  Thanks to user48986 at
 #     http://apple.stackexchange.com/questions/64408/can-you-disable-a-code-signature-check
+#   * Changed version to 0.8.2.
 #
 # Technical notes:
 #   Create a backup of the original file (cp rcd rcd_original_os).
 #   Comment out (--) the iTunes launch lines in rcd.
 
-VERSION=0.8   # Version of the script.
+VERSION=0.8.2   # Version of the script.
 
 rcd_path=/System/Library/CoreServices/rcd.app/Contents/MacOS
 
