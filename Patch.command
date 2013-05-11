@@ -16,7 +16,8 @@
 #  2011-09-03, fa: Added Michael's contact info 
 #     Michael Winestock  http://www.linkedin.com/pub/michael-winestock/18/579/972
 #  2013-05-11, fa: Added step to self-sign the modified binary. This should
-#     prevent rcd from crashing on Mountain Lion.
+#     prevent rcd from crashing on Mountain Lion.  Thanks to user48986 at
+#     http://apple.stackexchange.com/questions/64408/can-you-disable-a-code-signature-check
 #
 # Technical notes:
 #   Create a backup of the original file (cp rcd rcd_original_os).

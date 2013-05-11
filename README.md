@@ -26,7 +26,8 @@ Author: Farhan Ahmad (<http://www.thebitguru.com/projects/iTunesPatch>)
 Change Log
 ----------
     2013-05-11, fa: Added step to self-sign the modified binary. This should
-       prevent rcd from crashing on Mountain Lion.
+       prevent rcd from crashing on Mountain Lion.  Thanks to user48986 at
+       http://apple.stackexchange.com/questions/64408/can-you-disable-a-code-signature-check
 
     2011-09-03	Farhan Ahmad
      * Added Michael Winestock's info.
