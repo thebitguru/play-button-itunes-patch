@@ -1,6 +1,8 @@
 Play Button iTunes patch
 ========================
 
+You can download the compressed patch at <http://www.thebitguru.com/projects/iTunesPatch>.
+
 Overview
 --------
 This is a patch for removing the default OS X behavior of _always_ starting
