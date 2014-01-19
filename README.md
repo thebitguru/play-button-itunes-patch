@@ -27,6 +27,12 @@ Author: Farhan Ahmad (<http://www.thebitguru.com/projects/iTunesPatch>)
 
 Change Log
 ----------
+    2014-01-19, fa: Farhan Ahmad
+     * Added the '-KILL' to killall command because rcd doesn't seem to respect SIGTERM
+       anymore.  Thanks for @quicksnap (https://github.com/quicksnap) for helping
+       troubleshoot.
+     * Version changed to 0.8.3
+
     2013-05-11, fa: Farhan Ahmad
      * Added step to self-sign the modified binary. This should
        prevent rcd from crashing on Mountain Lion.  Thanks to user48986 at

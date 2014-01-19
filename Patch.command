@@ -24,12 +24,17 @@
 #     prevent rcd from crashing on Mountain Lion.  Thanks to user48986 at
 #     http://apple.stackexchange.com/questions/64408/can-you-disable-a-code-signature-check
 #   * Changed version to 0.8.2.
+#  2014-01-19, fa: Farhan Ahmad
+#     * Added the '-KILL' to killall command because rcd doesn't seem to respect SIGTERM
+#       anymore.  Thanks for @quicksnap (https://github.com/quicksnap) for helping
+#       troubleshoot.
+#     * Version changed to 0.8.3
 #
 # Technical notes:
 #   Create a backup of the original file (cp rcd rcd_original_os).
 #   Comment out (--) the iTunes launch lines in rcd.
 
-VERSION=0.8.2   # Version of the script.
+VERSION=0.8.3   # Version of the script.
 
 rcd_path=/System/Library/CoreServices/rcd.app/Contents/MacOS
 
@@ -89,7 +94,7 @@ if [[ $backup_count -ne 0 ]]; then
 	# Restore from the backup, use the first backup file.
 	echo
 	backup_file=`find $rcd_path -type f -maxdepth 1 -name rcd_backup_\* | head -1`
-	killall rcd 2> /dev/null            # Kill any existing processes
+	killall -KILL rcd 2> /dev/null            # Kill any existing processes
 	mv -f $backup_file $rcd_path/rcd    # Restore the backup file.
 	echo "Restore complete.  Your original functionality should be back.  To verify:"
 	echo " 1. If iTunes is already running then quit it first."
@@ -116,7 +121,7 @@ fi
 
 # Everything is good, let's stop the process, backup existing version and then patch.
 echo "Patching..."
-killall rcd 2> /dev/null   # Stop any running processing.
+killall -KILL rcd 2> /dev/null   # Stop any running processing.
 echo " + Killed any running processes."
 backup_filename="rcd_backup_${VERSION}_`date "+%Y%m%d%H%M.%S"`"
 cp $rcd_path/rcd $rcd_path/$backup_filename
