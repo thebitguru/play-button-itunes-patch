@@ -55,3 +55,7 @@ Change Log
 
     2010-11-23	Farhan Ahmad
      * Packaged and released the first version.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/thebitguru/play-button-itunes-patch/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
