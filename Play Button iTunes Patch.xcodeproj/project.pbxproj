@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7772FEC81A15B4D40080FA5C /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 777958071A158CE000F04458 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		777958081A158CE000F04458 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777958071A158CE000F04458 /* Sparkle.framework */; };
+		7779580E1A158F9300F04458 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7779580D1A158F9300F04458 /* AboutWindowController.m */; };
+		777958111A159ADC00F04458 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 777958101A159ADC00F04458 /* Credits.html */; };
+		778FE4C91A144EAC00A3CE34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 778FE4C81A144EAC00A3CE34 /* AppDelegate.m */; };
+		778FE4CB1A144EAC00A3CE34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 778FE4CA1A144EAC00A3CE34 /* main.m */; };
+		778FE4CD1A144EAC00A3CE34 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 778FE4CC1A144EAC00A3CE34 /* Images.xcassets */; };
+		778FE4D01A144EAC00A3CE34 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778FE4CE1A144EAC00A3CE34 /* MainMenu.xib */; };
+		778FE4DC1A144EAC00A3CE34 /* iTunes_Play_Button_PatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 778FE4DB1A144EAC00A3CE34 /* iTunes_Play_Button_PatchTests.m */; };
+		778FE4E71A14530A00A3CE34 /* Patcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 778FE4E61A14530A00A3CE34 /* Patcher.m */; };
+		778FE4EA1A14736400A3CE34 /* RcdFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 778FE4E91A14736400A3CE34 /* RcdFile.m */; };
+		77D3D3771A17BD0F00E427B4 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D3D3761A17BD0F00E427B4 /* logo.png */; };
+		77D3D37A1A17C05200E427B4 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D3791A17C05200E427B4 /* GradientView.m */; };
+		77D3D37C1A17CAA300E427B4 /* logo-large.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D3D37B1A17CAA300E427B4 /* logo-large.png */; };
+		77D77A2C1A158B8C0053880F /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D77A2B1A158B8C0053880F /* AboutWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		778FE4D61A144EAC00A3CE34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 778FE4BA1A144EAC00A3CE34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 778FE4C11A144EAC00A3CE34;
+			remoteInfo = "iTunes Play Button Patch";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7779580A1A158D3200F04458 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7772FEC81A15B4D40080FA5C /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		777958071A158CE000F04458 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		7779580C1A158F9300F04458 /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
+		7779580D1A158F9300F04458 /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
+		777958101A159ADC00F04458 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		778FE4C21A144EAC00A3CE34 /* Play Button iTunes Patch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Play Button iTunes Patch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		778FE4C61A144EAC00A3CE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		778FE4C71A144EAC00A3CE34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		778FE4C81A144EAC00A3CE34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		778FE4CA1A144EAC00A3CE34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		778FE4CC1A144EAC00A3CE34 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		778FE4CF1A144EAC00A3CE34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		778FE4D51A144EAC00A3CE34 /* Play Button iTunes PatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Play Button iTunes PatchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		778FE4DA1A144EAC00A3CE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		778FE4DB1A144EAC00A3CE34 /* iTunes_Play_Button_PatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTunes_Play_Button_PatchTests.m; sourceTree = "<group>"; };
+		778FE4E51A14530A00A3CE34 /* Patcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patcher.h; sourceTree = "<group>"; };
+		778FE4E61A14530A00A3CE34 /* Patcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patcher.m; sourceTree = "<group>"; };
+		778FE4E81A14736400A3CE34 /* RcdFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RcdFile.h; sourceTree = "<group>"; };
+		778FE4E91A14736400A3CE34 /* RcdFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RcdFile.m; sourceTree = "<group>"; };
+		77D3D3761A17BD0F00E427B4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		77D3D3781A17C05200E427B4 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		77D3D3791A17C05200E427B4 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		77D3D37B1A17CAA300E427B4 /* logo-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-large.png"; sourceTree = "<group>"; };
+		77D77A2B1A158B8C0053880F /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		778FE4BF1A144EAC00A3CE34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				777958081A158CE000F04458 /* Sparkle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		778FE4D21A144EAC00A3CE34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		777958061A158CC300F04458 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				777958071A158CE000F04458 /* Sparkle.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		7779580F1A158FA900F04458 /* About Window */ = {
+			isa = PBXGroup;
+			children = (
+				7779580C1A158F9300F04458 /* AboutWindowController.h */,
+				7779580D1A158F9300F04458 /* AboutWindowController.m */,
+				77D77A2B1A158B8C0053880F /* AboutWindow.xib */,
+			);
+			name = "About Window";
+			sourceTree = "<group>";
+		};
+		778FE4B91A144EAC00A3CE34 = {
+			isa = PBXGroup;
+			children = (
+				778FE4C41A144EAC00A3CE34 /* iTunes Play Button Patch */,
+				778FE4D81A144EAC00A3CE34 /* iTunes Play Button PatchTests */,
+				778FE4C31A144EAC00A3CE34 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		778FE4C31A144EAC00A3CE34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				778FE4C21A144EAC00A3CE34 /* Play Button iTunes Patch.app */,
+				778FE4D51A144EAC00A3CE34 /* Play Button iTunes PatchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		778FE4C41A144EAC00A3CE34 /* iTunes Play Button Patch */ = {
+			isa = PBXGroup;
+			children = (
+				7779580F1A158FA900F04458 /* About Window */,
+				778FE4CE1A144EAC00A3CE34 /* MainMenu.xib */,
+				778FE4C71A144EAC00A3CE34 /* AppDelegate.h */,
+				778FE4C81A144EAC00A3CE34 /* AppDelegate.m */,
+				778FE4E51A14530A00A3CE34 /* Patcher.h */,
+				778FE4E61A14530A00A3CE34 /* Patcher.m */,
+				778FE4E81A14736400A3CE34 /* RcdFile.h */,
+				778FE4E91A14736400A3CE34 /* RcdFile.m */,
+				778FE4CC1A144EAC00A3CE34 /* Images.xcassets */,
+				77D3D3781A17C05200E427B4 /* GradientView.h */,
+				77D3D3791A17C05200E427B4 /* GradientView.m */,
+				777958061A158CC300F04458 /* Frameworks */,
+				778FE4C51A144EAC00A3CE34 /* Supporting Files */,
+			);
+			path = "iTunes Play Button Patch";
+			sourceTree = "<group>";
+		};
+		778FE4C51A144EAC00A3CE34 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				77D3D3761A17BD0F00E427B4 /* logo.png */,
+				77D3D37B1A17CAA300E427B4 /* logo-large.png */,
+				778FE4C61A144EAC00A3CE34 /* Info.plist */,
+				778FE4CA1A144EAC00A3CE34 /* main.m */,
+				777958101A159ADC00F04458 /* Credits.html */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		778FE4D81A144EAC00A3CE34 /* iTunes Play Button PatchTests */ = {
+			isa = PBXGroup;
+			children = (
+				778FE4DB1A144EAC00A3CE34 /* iTunes_Play_Button_PatchTests.m */,
+				778FE4D91A144EAC00A3CE34 /* Supporting Files */,
+			);
+			path = "iTunes Play Button PatchTests";
+			sourceTree = "<group>";
+		};
+		778FE4D91A144EAC00A3CE34 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				778FE4DA1A144EAC00A3CE34 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		778FE4C11A144EAC00A3CE34 /* Play Button iTunes Patch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 778FE4DF1A144EAC00A3CE34 /* Build configuration list for PBXNativeTarget "Play Button iTunes Patch" */;
+			buildPhases = (
+				778FE4BE1A144EAC00A3CE34 /* Sources */,
+				778FE4BF1A144EAC00A3CE34 /* Frameworks */,
+				778FE4C01A144EAC00A3CE34 /* Resources */,
+				7779580A1A158D3200F04458 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Play Button iTunes Patch";
+			productName = "iTunes Play Button Patch";
+			productReference = 778FE4C21A144EAC00A3CE34 /* Play Button iTunes Patch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		778FE4D41A144EAC00A3CE34 /* Play Button iTunes PatchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 778FE4E21A144EAC00A3CE34 /* Build configuration list for PBXNativeTarget "Play Button iTunes PatchTests" */;
+			buildPhases = (
+				778FE4D11A144EAC00A3CE34 /* Sources */,
+				778FE4D21A144EAC00A3CE34 /* Frameworks */,
+				778FE4D31A144EAC00A3CE34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				778FE4D71A144EAC00A3CE34 /* PBXTargetDependency */,
+			);
+			name = "Play Button iTunes PatchTests";
+			productName = "iTunes Play Button PatchTests";
+			productReference = 778FE4D51A144EAC00A3CE34 /* Play Button iTunes PatchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		778FE4BA1A144EAC00A3CE34 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = thebitguru;
+				TargetAttributes = {
+					778FE4C11A144EAC00A3CE34 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					778FE4D41A144EAC00A3CE34 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 778FE4C11A144EAC00A3CE34;
+					};
+				};
+			};
+			buildConfigurationList = 778FE4BD1A144EAC00A3CE34 /* Build configuration list for PBXProject "Play Button iTunes Patch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 778FE4B91A144EAC00A3CE34;
+			productRefGroup = 778FE4C31A144EAC00A3CE34 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				778FE4C11A144EAC00A3CE34 /* Play Button iTunes Patch */,
+				778FE4D41A144EAC00A3CE34 /* Play Button iTunes PatchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		778FE4C01A144EAC00A3CE34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				778FE4CD1A144EAC00A3CE34 /* Images.xcassets in Resources */,
+				77D3D3771A17BD0F00E427B4 /* logo.png in Resources */,
+				777958111A159ADC00F04458 /* Credits.html in Resources */,
+				778FE4D01A144EAC00A3CE34 /* MainMenu.xib in Resources */,
+				77D77A2C1A158B8C0053880F /* AboutWindow.xib in Resources */,
+				77D3D37C1A17CAA300E427B4 /* logo-large.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		778FE4D31A144EAC00A3CE34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		778FE4BE1A144EAC00A3CE34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				778FE4E71A14530A00A3CE34 /* Patcher.m in Sources */,
+				7779580E1A158F9300F04458 /* AboutWindowController.m in Sources */,
+				778FE4EA1A14736400A3CE34 /* RcdFile.m in Sources */,
+				778FE4CB1A144EAC00A3CE34 /* main.m in Sources */,
+				77D3D37A1A17C05200E427B4 /* GradientView.m in Sources */,
+				778FE4C91A144EAC00A3CE34 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		778FE4D11A144EAC00A3CE34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				778FE4DC1A144EAC00A3CE34 /* iTunes_Play_Button_PatchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		778FE4D71A144EAC00A3CE34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 778FE4C11A144EAC00A3CE34 /* Play Button iTunes Patch */;
+			targetProxy = 778FE4D61A144EAC00A3CE34 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		778FE4CE1A144EAC00A3CE34 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				778FE4CF1A144EAC00A3CE34 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		778FE4DD1A144EAC00A3CE34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		778FE4DE1A144EAC00A3CE34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		778FE4E01A144EAC00A3CE34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"./**",
+				);
+				INFOPLIST_FILE = "iTunes Play Button Patch/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "Play Button iTunes Patch";
+			};
+			name = Debug;
+		};
+		778FE4E11A144EAC00A3CE34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"./**",
+				);
+				INFOPLIST_FILE = "iTunes Play Button Patch/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "Play Button iTunes Patch";
+			};
+			name = Release;
+		};
+		778FE4E31A144EAC00A3CE34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "iTunes Play Button PatchTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "Play Button iTunes PatchTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunes Play Button Patch.app/Contents/MacOS/iTunes Play Button Patch";
+			};
+			name = Debug;
+		};
+		778FE4E41A144EAC00A3CE34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "iTunes Play Button PatchTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "Play Button iTunes PatchTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunes Play Button Patch.app/Contents/MacOS/iTunes Play Button Patch";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		778FE4BD1A144EAC00A3CE34 /* Build configuration list for PBXProject "Play Button iTunes Patch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				778FE4DD1A144EAC00A3CE34 /* Debug */,
+				778FE4DE1A144EAC00A3CE34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		778FE4DF1A144EAC00A3CE34 /* Build configuration list for PBXNativeTarget "Play Button iTunes Patch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				778FE4E01A144EAC00A3CE34 /* Debug */,
+				778FE4E11A144EAC00A3CE34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		778FE4E21A144EAC00A3CE34 /* Build configuration list for PBXNativeTarget "Play Button iTunes PatchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				778FE4E31A144EAC00A3CE34 /* Debug */,
+				778FE4E41A144EAC00A3CE34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 778FE4BA1A144EAC00A3CE34 /* Project object */;
+}

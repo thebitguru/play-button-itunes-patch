@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
+            <connections>
+                <outlet property="logoImage" destination="9MH-Wh-Lsx" id="Qxu-qH-XEi"/>
+                <outlet property="osVersion" destination="BUX-Vj-wPS" id="tqx-eQ-4Zr"/>
+                <outlet property="restoreFromBackupButton" destination="gle-HH-I5U" id="Emz-e2-UPl"/>
+                <outlet property="status" destination="q1B-cJ-LCq" id="W1U-Ge-lfy"/>
+                <outlet property="tableView" destination="HWV-yP-WsQ" id="IwN-Q6-mvI"/>
+                <outlet property="topBackground" destination="Ehh-68-iZr" id="lRQ-ly-Ezg"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="AhV-xa-6ej" customClass="SUUpdater"/>
+        <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+            <items>
+                <menuItem title="iTunes Play Button Patch" id="1Xt-HY-uBw">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="iTunes Play Button Patch" systemMenu="apple" id="uQy-DD-JDr">
+                        <items>
+                            <menuItem title="About iTunes Play Button Patch" id="5kV-Vb-QxS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="4UO-OA-mLg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Check for Updates..." hidden="YES" enabled="NO" id="cCB-HD-P0w">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="AhV-xa-6ej" id="gyy-uC-fvz"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+                            <menuItem title="Services" id="NMo-om-nkz">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
+                            <menuItem title="Hide iTunes Play Button Patch" keyEquivalent="h" id="Olw-nP-bQN">
+                                <connections>
+                                    <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-1" id="VT4-aY-XCT"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="Kd2-mp-pUS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-1" id="Dhg-Le-xox"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                            <menuItem title="Quit iTunes Play Button Patch" keyEquivalent="q" id="4sb-4s-VLi">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Edit" id="5QF-Oa-p0T">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Edit" id="W48-6f-4Dl">
+                        <items>
+                            <menuItem title="Copy" keyEquivalent="c" id="x3v-GG-iWU">
+                                <connections>
+                                    <action selector="copy:" target="-1" id="G1f-GL-Joy"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="aUF-d1-5bR">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                        <items>
+                            <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="VwT-WD-YPe"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom" id="R4o-n2-Eq4">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="performZoom:" target="-1" id="DIl-cC-cCs"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
+                            <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="arrangeInFront:" target="-1" id="DRN-fu-gQh"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="wpr-3q-Mcd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
+                        <items>
+                            <menuItem title="iTunes Play Button Patch Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+        </menu>
+        <window identifier="mainWindow" title="Play Button iTunes Patch" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindow" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <rect key="contentRect" x="335" y="390" width="750" height="545"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <value key="minSize" type="size" width="750" height="300"/>
+            <value key="maxSize" type="size" width="750" height="2000"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="750" height="545"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BUX-Vj-wPS">
+                        <rect key="frame" x="124" y="273" width="605" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Version" id="NbS-61-7xA">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TEx-Mi-Kxc">
+                        <rect key="frame" x="18" y="302" width="44" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Status" id="d7s-oT-FDS">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1B-cJ-LCq">
+                        <rect key="frame" x="124" y="300" width="605" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Status" id="G1z-cC-3e8">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6VR-hj-ale">
+                        <rect key="frame" x="660" y="7" width="76" height="32"/>
+                        <buttonCell key="cell" type="push" title="Patch" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="f02-cN-DLs">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="patchButtonClicked:" target="Voe-Tx-rLC" id="Wyo-ys-pAI"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QDU-yM-uKO">
+                        <rect key="frame" x="18" y="275" width="85" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OS X Version" id="GhD-ry-KTY">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUL-yD-Jvs">
+                        <rect key="frame" x="20" y="48" width="710" height="208"/>
+                        <clipView key="contentView" id="rC1-jW-4MI">
+                            <rect key="frame" x="1" y="0.0" width="238" height="134"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="MainTableView" headerView="0yg-q7-aUS" id="HWV-yP-WsQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="620" height="19"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn identifier="filename" editable="NO" width="116" minWidth="40" maxWidth="1000" id="uJg-zm-EyF">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="File Name">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="13Q-h0-5VA">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        </tableColumn>
+                                        <tableColumn identifier="comments" editable="NO" width="220" minWidth="40" maxWidth="1000" id="WnR-3V-Xbj">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Comments">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Z9V-93-fYL">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        </tableColumn>
+                                        <tableColumn identifier="md5sum" editable="NO" width="362.81640625" minWidth="10" maxWidth="3.4028234663852886e+38" id="ftU-vr-HiF">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="MD5 Sum">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="g1O-qU-J5f">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        </tableColumn>
+                                    </tableColumns>
+                                    <connections>
+                                        <outlet property="dataSource" destination="Voe-Tx-rLC" id="O6b-hd-2EP"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="SgS-Ce-NUq">
+                            <rect key="frame" x="1" y="119" width="223" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="uni-zj-9HS">
+                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <tableHeaderView key="headerView" id="0yg-q7-aUS">
+                            <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </tableHeaderView>
+                        <connections>
+                            <outlet property="menu" destination="oyh-UG-EH1" id="hUP-oz-cIf"/>
+                        </connections>
+                    </scrollView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gle-HH-I5U">
+                        <rect key="frame" x="489" y="7" width="171" height="32"/>
+                        <buttonCell key="cell" type="push" title="Restore from Backup" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MW9-WL-0Sr">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="restoreFromBackupButtonClicked:" target="Voe-Tx-rLC" id="y1F-Rg-pGh"/>
+                        </connections>
+                    </button>
+                    <customView focusRingType="none" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ehh-68-iZr" customClass="GradientView">
+                        <rect key="frame" x="0.0" y="330" width="750" height="215"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9MH-Wh-Lsx">
+                                <rect key="frame" x="20" y="135" width="77" height="60"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="2D1-h0-hE7"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZz-ti-eaE">
+                                <rect key="frame" x="101" y="166" width="302" height="29"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Play Button iTunes Patch" id="Iq8-Cl-4lh">
+                                    <font key="font" size="24" name="HelveticaNeue-Bold"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ug-9D-xC6">
+                                <rect key="frame" x="101" y="5" width="636" height="153"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="5zj-nX-X02">
+                                    <font key="font" metaFont="system"/>
+                                    <mutableString key="title">This program will patch the Remote Control Daemon to prevent it from starting iTunes whenever you press the play button on the keyboard or an external remote control. This will only prevent iTunes from starting, all other functions (like play/pause while iTunes is _running_) will continue to work as before.
+
+Also, this program will backup the original file in case if you would like to restore the original functionality.
+                                                                               
+This program comes with ABSOLUTELY NO WARRANTY; please see the license in the about window.</mutableString>
+                                    <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="lZz-ti-eaE" firstAttribute="top" secondItem="9MH-Wh-Lsx" secondAttribute="top" id="0tD-WT-tIQ"/>
+                            <constraint firstItem="lZz-ti-eaE" firstAttribute="leading" secondItem="Ehh-68-iZr" secondAttribute="leading" constant="103" id="ApM-Ed-TOT"/>
+                            <constraint firstItem="9MH-Wh-Lsx" firstAttribute="top" secondItem="Ehh-68-iZr" secondAttribute="top" constant="20" id="Ch8-an-jr4"/>
+                            <constraint firstItem="lZz-ti-eaE" firstAttribute="leading" secondItem="9MH-Wh-Lsx" secondAttribute="trailing" constant="6" id="Rsb-A1-6ej"/>
+                            <constraint firstItem="9MH-Wh-Lsx" firstAttribute="leading" secondItem="Ehh-68-iZr" secondAttribute="leading" constant="20" id="ogH-Xw-JRu"/>
+                            <constraint firstAttribute="bottom" secondItem="lZz-ti-eaE" secondAttribute="bottom" constant="166" id="q2v-UJ-f5e"/>
+                        </constraints>
+                    </customView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WMj-Zw-q3s">
+                        <rect key="frame" x="401" y="7" width="88" height="32"/>
+                        <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pvz-8b-ccj">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="refreshButtonClicked:" target="Voe-Tx-rLC" id="xbl-cE-ZKb"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Ehh-68-iZr" secondAttribute="trailing" id="3yb-Dx-SMK"/>
+                    <constraint firstItem="gle-HH-I5U" firstAttribute="baseline" secondItem="6VR-hj-ale" secondAttribute="baseline" id="6Bv-2a-g0b"/>
+                    <constraint firstItem="BUX-Vj-wPS" firstAttribute="leading" secondItem="QDU-yM-uKO" secondAttribute="trailing" constant="23" id="8Fl-DD-2RO"/>
+                    <constraint firstAttribute="trailing" secondItem="q1B-cJ-LCq" secondAttribute="trailing" constant="20" id="9Qd-sC-isy"/>
+                    <constraint firstItem="IUL-yD-Jvs" firstAttribute="trailing" secondItem="6VR-hj-ale" secondAttribute="trailing" id="F0S-pc-OOf"/>
+                    <constraint firstItem="IUL-yD-Jvs" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="FhP-Ac-h9y"/>
+                    <constraint firstItem="IUL-yD-Jvs" firstAttribute="top" secondItem="QDU-yM-uKO" secondAttribute="bottom" constant="19" id="HJX-u8-f0M"/>
+                    <constraint firstAttribute="bottom" secondItem="gle-HH-I5U" secondAttribute="bottom" constant="14" id="LMy-jL-PAH"/>
+                    <constraint firstItem="IUL-yD-Jvs" firstAttribute="leading" secondItem="TEx-Mi-Kxc" secondAttribute="leading" id="M22-su-KKD"/>
+                    <constraint firstItem="IUL-yD-Jvs" firstAttribute="leading" secondItem="QDU-yM-uKO" secondAttribute="leading" id="RhM-HG-O20"/>
+                    <constraint firstAttribute="trailing" secondItem="gle-HH-I5U" secondAttribute="trailing" constant="96" id="TXN-jq-n9w"/>
+                    <constraint firstItem="gle-HH-I5U" firstAttribute="leading" secondItem="WMj-Zw-q3s" secondAttribute="trailing" constant="12" id="fac-qk-2Ys"/>
+                    <constraint firstItem="6VR-hj-ale" firstAttribute="top" secondItem="IUL-yD-Jvs" secondAttribute="bottom" constant="13" id="gtf-0F-MVs"/>
+                    <constraint firstAttribute="trailing" secondItem="BUX-Vj-wPS" secondAttribute="trailing" constant="20" id="kQY-KJ-mHf"/>
+                    <constraint firstItem="6VR-hj-ale" firstAttribute="leading" secondItem="gle-HH-I5U" secondAttribute="trailing" constant="12" id="mMC-h6-GlB"/>
+                    <constraint firstItem="Ehh-68-iZr" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="nl2-2i-bBE"/>
+                    <constraint firstItem="q1B-cJ-LCq" firstAttribute="leading" secondItem="TEx-Mi-Kxc" secondAttribute="trailing" constant="64" id="oet-dv-7I6"/>
+                    <constraint firstItem="QDU-yM-uKO" firstAttribute="top" secondItem="TEx-Mi-Kxc" secondAttribute="bottom" constant="10" id="xaQ-iw-C1W"/>
+                    <constraint firstItem="IUL-yD-Jvs" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="289" id="yP8-XL-GXx"/>
+                    <constraint firstAttribute="bottom" secondItem="WMj-Zw-q3s" secondAttribute="bottom" constant="14" id="zMj-A0-nVL"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="9FU-km-LL8"/>
+            </connections>
+            <point key="canvasLocation" x="457" y="559.5"/>
+        </window>
+        <menu id="oyh-UG-EH1">
+            <items>
+                <menuItem title="Show in Finder..." id="gmX-kv-hqZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showInFinderMenu:" target="Voe-Tx-rLC" id="rnT-pi-R83"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="D4c-3R-np3"/>
+            </connections>
+        </menu>
+    </objects>
+</document>
