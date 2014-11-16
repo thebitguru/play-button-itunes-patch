@@ -19,6 +19,7 @@
 @property (weak) IBOutlet NSTextField *status;
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSTextField *titleTextField;
 @property (weak) IBOutlet NSImageView *logoImage;
 @property (weak) IBOutlet GradientView *topBackground;
 
@@ -42,6 +43,10 @@
     [self refreshView];
     
     [_logoImage setImage:[NSImage imageNamed:@"logo.png"]];
+    
+    NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    [_window setTitle:[NSString stringWithFormat:@"%@ - %@", [_window title], version]];
+    [_titleTextField setStringValue:[NSString stringWithFormat:@"%@ - %@", [_titleTextField stringValue], version]];
     
     [_topBackground setEndingColor:[NSColor colorWithCalibratedRed:38.0/255 green:90.0/255 blue:158.0/255 alpha:1.0]];
     [_topBackground setStartingColor:[NSColor colorWithCalibratedRed:48.0/255 green:118.0/255 blue:209.0/255 alpha:1.0]];

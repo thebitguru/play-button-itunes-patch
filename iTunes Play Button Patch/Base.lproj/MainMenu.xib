@@ -18,6 +18,7 @@
                 <outlet property="restoreFromBackupButton" destination="gle-HH-I5U" id="Emz-e2-UPl"/>
                 <outlet property="status" destination="q1B-cJ-LCq" id="W1U-Ge-lfy"/>
                 <outlet property="tableView" destination="HWV-yP-WsQ" id="IwN-Q6-mvI"/>
+                <outlet property="titleTextField" destination="lZz-ti-eaE" id="q3p-ps-Cw2"/>
                 <outlet property="topBackground" destination="Ehh-68-iZr" id="lRQ-ly-Ezg"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -184,7 +185,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="MainTableView" headerView="0yg-q7-aUS" id="HWV-yP-WsQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="620" height="19"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="708" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -270,8 +271,8 @@
                                 <rect key="frame" x="20" y="135" width="77" height="60"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="2D1-h0-hE7"/>
                             </imageView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZz-ti-eaE">
-                                <rect key="frame" x="101" y="166" width="302" height="29"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZz-ti-eaE">
+                                <rect key="frame" x="101" y="166" width="621" height="29"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Play Button iTunes Patch" id="Iq8-Cl-4lh">
                                     <font key="font" size="24" name="HelveticaNeue-Bold"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -282,11 +283,11 @@
                                 <rect key="frame" x="101" y="5" width="636" height="153"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="5zj-nX-X02">
                                     <font key="font" metaFont="system"/>
-                                    <mutableString key="title">This program will patch the Remote Control Daemon to prevent it from starting iTunes whenever you press the play button on the keyboard or an external remote control. This will only prevent iTunes from starting, all other functions (like play/pause while iTunes is _running_) will continue to work as before.
+                                    <string key="title">This program will patch the Remote Control Daemon to prevent it from starting iTunes whenever you press the play button on the keyboard or an external remote control. This will only prevent iTunes from starting, all other functions (like play/pause while iTunes is _running_) will continue to work as before.
 
 Also, this program will backup the original file in case if you would like to restore the original functionality.
                                                                                
-This program comes with ABSOLUTELY NO WARRANTY; please see the license in the about window.</mutableString>
+This program comes with ABSOLUTELY NO WARRANTY; please see the license in the about window.</string>
                                     <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -297,6 +298,7 @@ This program comes with ABSOLUTELY NO WARRANTY; please see the license in the ab
                             <constraint firstItem="lZz-ti-eaE" firstAttribute="leading" secondItem="Ehh-68-iZr" secondAttribute="leading" constant="103" id="ApM-Ed-TOT"/>
                             <constraint firstItem="9MH-Wh-Lsx" firstAttribute="top" secondItem="Ehh-68-iZr" secondAttribute="top" constant="20" id="Ch8-an-jr4"/>
                             <constraint firstItem="lZz-ti-eaE" firstAttribute="leading" secondItem="9MH-Wh-Lsx" secondAttribute="trailing" constant="6" id="Rsb-A1-6ej"/>
+                            <constraint firstAttribute="trailing" secondItem="lZz-ti-eaE" secondAttribute="trailing" constant="30" id="kWS-RS-pwr"/>
                             <constraint firstItem="9MH-Wh-Lsx" firstAttribute="leading" secondItem="Ehh-68-iZr" secondAttribute="leading" constant="20" id="ogH-Xw-JRu"/>
                             <constraint firstAttribute="bottom" secondItem="lZz-ti-eaE" secondAttribute="bottom" constant="166" id="q2v-UJ-f5e"/>
                         </constraints>
