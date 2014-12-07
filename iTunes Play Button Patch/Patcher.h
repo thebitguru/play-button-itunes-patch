@@ -17,6 +17,10 @@ static NSString * const RCD_PATH = @"/System/Library/CoreServices/rcd.app/Conten
 @property BOOL backupPresent;
 @property BOOL isMainFilePatched;
 
+
+// Backup file URL.  IF and only IF there is one backup file.
+@property NSURL * backupFileURL;
+
 - (id) init;
 - (BOOL) isFilePatched: (NSString *) filePath;
 - (void) reloadFiles;

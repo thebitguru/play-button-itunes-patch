@@ -14,6 +14,7 @@
              comments:(NSString *)comments
                md5sum:(NSString *)md5sum
             isPatched:(BOOL)isPatched
+         dateModified:(NSDate *) dateModified
               fileUrl:(NSURL *)fileUrl {
     self = [super init];
     if (self) {
@@ -22,6 +23,7 @@
         _md5sum = md5sum;
         _isPatched = isPatched;
         _fileUrl = fileUrl;
+        _dateModified = dateModified;
     }
     return self;
 }

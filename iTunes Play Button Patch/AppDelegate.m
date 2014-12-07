@@ -11,6 +11,7 @@
 #import "RcdFile.h"
 #import "AboutWindowController.h"
 #import "GradientView.h"
+@import QuartzCore;
 
 @interface AppDelegate ()
 
@@ -34,14 +35,17 @@
     Patcher * _patcher;
     AboutWindowController * _aboutWindowController;
     NSFileCoordinator * _fileCoordinator;
+    NSDateFormatter * _dateFormatter;
 }
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    [_dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [_dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    
     _patcher = [[Patcher alloc] init];
     [_osVersion setStringValue:[[NSProcessInfo processInfo] operatingSystemVersionString]];
-    [self refreshView];
-    
     [_logoImage setImage:[NSImage imageNamed:@"logo.png"]];
     
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
@@ -54,6 +58,14 @@
     [_topBackground setNeedsDisplay:YES];
     
     // TODO: Figure out how to hookup the directory watch.
+    
+    if ([NSVisualEffectView class]) {
+        [_window setStyleMask:[_window styleMask] | NSFullSizeContentViewWindowMask];
+        [_window setTitleVisibility:NSWindowTitleHidden];
+        [_window setTitlebarAppearsTransparent:YES];
+    }
+    
+    [self refreshView];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -84,11 +96,56 @@
     } else {
         [_status setStringValue:@"Unpatched."];
     }
-    
+
     [_restoreFromBackupButton setEnabled:[_patcher backupPresent]];
+    
+    
+    // Animate the updated status label.
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    CATransform3D forward = CATransform3DMakeScale(1.2, 1.2, 1);
+    CATransform3D back = CATransform3DMakeScale(0.8, 0.8, 1);
+    CATransform3D forward2 = CATransform3DMakeScale(1.2, 1.2, 1);
+    CATransform3D back2 = CATransform3DMakeScale(0.9, 0.9, 1);
+    [animation setValues:[NSArray arrayWithObjects:
+                       [NSValue valueWithCATransform3D:CATransform3DIdentity],
+                       [NSValue valueWithCATransform3D:forward],
+                       [NSValue valueWithCATransform3D:back],
+                       [NSValue valueWithCATransform3D:forward2],
+                       [NSValue valueWithCATransform3D:back2],
+                       [NSValue valueWithCATransform3D:CATransform3DIdentity],
+                       nil]];
+    [animation setDuration:0.5];
+    [[_status layer] addAnimation:animation forKey:@"updateAnimation"];
+    
+//    CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+//    [animation setDuration:0.25];
+//    [animation setFromValue:[NSNumber numberWithFloat:0]];
+//    [animation setToValue:[NSNumber numberWithFloat:2 * M_PI]];
+//    [[_status layer] addAnimation:animation forKey:animation.keyPath];
+    
+    
+//    CALayer *layer = [_status layer];
+//    CATransform3D transform = CATransform3DIdentity;
+//    transform.m34 = 1.0 / -50;
+//    layer.transform = transform;
+//    
+//    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+//    animation.values = [NSArray arrayWithObjects:
+//                        [NSValue valueWithCATransform3D:CATransform3DRotate(transform, 0 * M_PI / 2, 100, 1, 100)],
+//                        [NSValue valueWithCATransform3D:CATransform3DRotate(transform, 1 * M_PI / 2, 100, 1, 100)],
+//                        [NSValue valueWithCATransform3D:CATransform3DRotate(transform, 1 * M_PI / 2, 100, 1, 100)],
+//                        [NSValue valueWithCATransform3D:CATransform3DRotate(transform, 1 * M_PI / 2, 100, 1, 100)],
+//                        [NSValue valueWithCATransform3D:CATransform3DRotate(transform, 4 * M_PI / 2, 100, 1, 100)],
+//                        nil];
+//    animation.duration = 1;
+//    [layer addAnimation:animation forKey:animation.keyPath];
+    
+//    [[_status layer] setTransform:transform];
+    
 }
 
 - (IBAction)restoreFromBackupButtonClicked:(id)sender {
+//    [_patcher restoreFromLastBackup];
 }
 
 - (IBAction)patchButtonClicked:(id)sender {
@@ -147,6 +204,8 @@
         return [[item md5sum] copy];
     } else if ([identifier isEqualToString:@"comments"]) {
         return [[item comments] copy];
+    } else if ([identifier isEqualToString:@"dateModified"]) {
+        return [_dateFormatter stringFromDate:[item dateModified]];
     } else {
         return @"COLUMN ID NOT FOUND";
     }

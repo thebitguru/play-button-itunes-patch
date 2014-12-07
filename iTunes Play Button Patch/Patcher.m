@@ -24,6 +24,7 @@
         
         _fileManager = [NSFileManager defaultManager];
         _files = [[NSMutableArray alloc] init];
+        _backupFileURL = nil;
         
         _backupPresent = false;
         _isMainFilePatched = false;
@@ -43,6 +44,7 @@
     
     _backupPresent = false;
     _isMainFilePatched = false;
+    _backupFileURL = nil;
     NSError * error;
     NSArray * contents = [_fileManager contentsOfDirectoryAtPath:RCD_PATH error:&error];
 //    NSArray * contents = [_fileManager subpathsAtPath:RCD_PATH];   // Show subdirectory contents as well.
@@ -86,7 +88,15 @@
         // Calculate the md5 sum.
         NSString * md5sum = [self calculateMD5Sum:[_fileManager contentsAtPath:[fileUrl path]]];
         
-        [_files addObject:[[RcdFile alloc] initWithParams:filename comments:comments md5sum:md5sum isPatched:isPatched fileUrl:fileUrl]];
+        NSDate * dateModified;
+        [fileUrl getResourceValue:&dateModified forKey:NSURLContentModificationDateKey error:&error];
+        
+        [_files addObject:[[RcdFile alloc] initWithParams:filename
+                                                 comments:comments
+                                                   md5sum:md5sum
+                                                isPatched:isPatched
+                                             dateModified:dateModified
+                                                  fileUrl:fileUrl]];
     }
 }
 

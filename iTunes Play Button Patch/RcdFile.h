@@ -15,12 +15,14 @@
 @property (copy) NSString * comments;
 @property (copy) NSString * md5sum;
 @property (copy) NSURL * fileUrl;
+@property (copy) NSDate * dateModified;
 @property BOOL isPatched;
 
 - (id) initWithParams:(NSString *)name
              comments:(NSString *)comments
                md5sum:(NSString *)md5sum
             isPatched:(BOOL)isPatched
+         dateModified:(NSDate *) dateModified
               fileUrl:(NSURL *)fileUrl;
 
 @end
