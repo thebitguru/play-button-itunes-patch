@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7769FE471A47A357008971EB /* notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7769FE461A47A357008971EB /* notes.txt */; };
-		7772FEC81A15B4D40080FA5C /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 777958071A158CE000F04458 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		777958081A158CE000F04458 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777958071A158CE000F04458 /* Sparkle.framework */; };
 		7779580E1A158F9300F04458 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7779580D1A158F9300F04458 /* AboutWindowController.m */; };
 		777958111A159ADC00F04458 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 777958101A159ADC00F04458 /* Credits.html */; };
 		778FE4C91A144EAC00A3CE34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 778FE4C81A144EAC00A3CE34 /* AppDelegate.m */; };
@@ -34,19 +32,6 @@
 			remoteInfo = "iTunes Play Button Patch";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		7779580A1A158D3200F04458 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7772FEC81A15B4D40080FA5C /* Sparkle.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7769FE461A47A357008971EB /* notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
@@ -80,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				777958081A158CE000F04458 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +174,6 @@
 				778FE4BE1A144EAC00A3CE34 /* Sources */,
 				778FE4BF1A144EAC00A3CE34 /* Frameworks */,
 				778FE4C01A144EAC00A3CE34 /* Resources */,
-				7779580A1A158D3200F04458 /* CopyFiles */,
 			);
 			buildRules = (
 			);

@@ -7,24 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RcdFile.h"
 
-static NSString * const RCD_PATH = @"/Users/thebitguru/Documents/Development/Projects/play-button-itunes-patch/rcd";
-//static NSString * const RCD_PATH = @"/System/Library/CoreServices/rcd.app/Contents/MacOS/";
+//static NSString * const RCD_PATH = @"/Users/thebitguru/Documents/Development/Projects/play-button-itunes-patch/rcd";
+static NSString * const RCD_PATH = @"/System/Library/CoreServices/rcd.app/Contents/MacOS/";
 
 @interface Patcher : NSObject
 
 @property NSMutableArray* files;
-@property BOOL isBackupPresent;
-@property NSArray * backupFiles;
+@property NSMutableArray * backupFiles;
 @property BOOL isMainFilePatched;
 @property BOOL areCommandLineToolsInstalled;
-
-// Backup file URL.  IF and only IF there is one backup file.
-@property NSURL * backupFileURL;
 
 - (id) init;
 - (BOOL) isFilePatched: (NSString *) filePath;
 - (void) reloadFiles;
 - (void) patchFile: (NSError *) error;
+- (void) restoreFromBackupFile:(RcdFile *)fileToRestore;
 
 @end

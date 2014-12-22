@@ -46,6 +46,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     _dateFormatter = [[NSDateFormatter alloc] init];
+//    [_dateFormatter setDateFormat:@"MM/dd/Y h:mm:ss a"];
     [_dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [_dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     
@@ -127,12 +128,13 @@
         [_status setStringValue:@"Unpatched."];
     }
     
-    if ([_patcher isBackupPresent]) {
-        [_restoreFromBackupButton setToolTip:@"Backup found, ready to restore."];
+    if ([[_patcher backupFiles] count] > 0) {
+        [_restoreFromBackupButton setEnabled:true];
+        [_restoreFromBackupButton setToolTip:@"Backups found, ready to restore."];
     } else {
         [_restoreFromBackupButton setToolTip:@"No backup found."];
+        [_restoreFromBackupButton setEnabled:false];
     }
-    [_restoreFromBackupButton setEnabled:[_patcher isBackupPresent]];
     
     
     // Animate the updated status label.
@@ -196,7 +198,84 @@
 }
 
 - (IBAction)restoreFromBackupButtonClicked:(id)sender {
-//    [_patcher restoreFromLastBackup];
+    RcdFile * fileToRestore = nil;
+    
+    // If there are multiple backup files then decide which one to use.
+    if ([[_patcher backupFiles] count] > 1) {
+        NSAlert * alert = [[NSAlert alloc] init];
+        
+        // Find latest backup file.
+        RcdFile * latestFile = nil;
+        for (RcdFile * file in [_patcher backupFiles]) {
+            if (latestFile == nil) {
+                latestFile = file;
+                continue;
+            }
+            
+            if ([[file dateModified] isGreaterThan:[latestFile dateModified]]) {
+                latestFile = file;
+            }
+        }
+        
+        if ([_tableView selectedRow] != -1) {
+            RcdFile * selectedFile = [[_patcher files] objectAtIndex:[_tableView selectedRow]];
+            // If the user has already selected a backup file then we confirm a few things.
+            if ([selectedFile isBackupFile]) {
+                // If the selected file is older than the *latest* backup file then confirm.
+                if ([[selectedFile fileUrl] isEqualTo:[latestFile fileUrl]] == false) {
+                    [alert setMessageText:[NSString
+                                           stringWithFormat:@"The backup file that you have selected (%@) is not the latest backup file (%@), are you sure you want to restore from an older backup file?",
+                                           [[selectedFile fileUrl] lastPathComponent],
+                                           [[latestFile fileUrl] lastPathComponent]]];
+                    [alert addButtonWithTitle:@"Yes, restore from the older version"];
+                    [alert addButtonWithTitle:@"No, stop, I am going to select a different file"];
+                    if ([alert runModal] == NSAlertSecondButtonReturn) {
+                        return;
+                    } else {
+                        fileToRestore = selectedFile;
+                    }
+                } else {
+                    // Otherwise, this is the latest file so we don't need to check anything.
+                    fileToRestore = selectedFile;
+                }
+            }
+        }
+        
+        if (fileToRestore == nil) {
+            // Otherwise, they haven't selected a specific file so confirm that they would like to restore from
+            // the latest file.
+            alert = [[NSAlert alloc] init];
+            [alert setMessageText:[NSString
+                                   stringWithFormat:@"There are multiple backup files, would you like to restore the latest one (%@)?",
+                                   [[latestFile fileUrl] lastPathComponent]]];
+            [alert addButtonWithTitle:@"Yes"];
+            [alert addButtonWithTitle:@"No, stop"];
+            if ([alert runModal] == NSAlertSecondButtonReturn) {
+                alert = [[NSAlert alloc] init];
+                [alert setMessageText:@"In that case select a specific backup file from the list and click the restore button again."];
+                [alert addButtonWithTitle:@"OK"];
+                [alert runModal];
+                return;
+            } else {
+                fileToRestore = latestFile;
+            }
+        }
+    } else {
+        fileToRestore = [[_patcher backupFiles] objectAtIndex:0];
+    }
+    
+    // Finally restore from the decided backup file.
+    @try {
+        [_patcher restoreFromBackupFile:fileToRestore];
+    }
+    @catch (NSException *exception) {
+        NSAlert * alert = [[NSAlert alloc] init];
+        [alert setInformativeText:[exception description]];
+        [alert addButtonWithTitle:@"OK"];
+        [alert runModal];
+        NSLog(@"Problem restoring from backup: %@", [exception description]);
+    }
+    [self refreshView];
 }
 
 - (IBAction)patchButtonClicked:(id)sender {
@@ -214,7 +293,7 @@
         }
     }
     
-    [alert setMessageText:@"You will now be asked for administrator password twice, since rcd file is in a privileged location this access is necessary to apply the patch."];
+    [alert setMessageText:@"You will now be asked for administrator password **twice**, since rcd file is in a privileged location this access is necessary to apply the patch."];
     [alert addButtonWithTitle:@"OK"];
     [alert addButtonWithTitle:@"Cancel"];
     if ([alert runModal] == NSAlertSecondButtonReturn) {
@@ -232,14 +311,26 @@
         [alert addButtonWithTitle:@"OK"];
         [alert runModal];
         NSLog(@"Problem running task: %@", [exception description]);
-    }
-    @finally {
+        [self refreshView];
+        return;
     }
 
     if (error != NULL) {
         NSLog(@"%@", [error description]);
+        [self refreshView];
+        return;
     }
+    
+    // File was patched successfully.
     [self refreshView];
+    alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Patch Applied"];
+    [alert setInformativeText:@"The patch was applied successfully.\n\nYou only have to do this once per Mac OS X upgrade."];
+    [alert addButtonWithTitle:@"Excellent, take me to the project website now!"];
+    [alert addButtonWithTitle:@"Excellent, I am all set!"];
+    if ([alert runModal] == NSAlertFirstButtonReturn) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.thebitguru.com/projects/iTunesPatch?utm_source=guiapp&utm_medium=guiapp&utm_campaign=successful-patch"]];
+    }
 }
 
 - (IBAction)aboutMenuItemClicked:(id)sender {

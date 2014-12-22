@@ -1,0 +1,7 @@
+ * Implemented the restore function.
+ * Removed Sparkle for now.
+
+
+------------------------------------------
+TODO:
+ * Figure out code signing and dmg creation.

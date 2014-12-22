@@ -17,6 +17,7 @@
 @property (copy) NSURL * fileUrl;
 @property (copy) NSDate * dateModified;
 @property BOOL isPatched;
+@property BOOL isBackupFile;
 
 - (id) initWithParams:(NSString *)name
              comments:(NSString *)comments

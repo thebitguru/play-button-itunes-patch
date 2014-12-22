@@ -24,9 +24,7 @@
         
         _fileManager = [NSFileManager defaultManager];
         _files = [[NSMutableArray alloc] init];
-        _backupFileURL = nil;
-        
-        _isBackupPresent = false;
+        _backupFiles = [[NSMutableArray alloc] init];
         _isMainFilePatched = false;
         _areCommandLineToolsInstalled = false;
         [self reloadFiles];
@@ -62,13 +60,12 @@
 
 - (void) reloadFiles {
     [_files removeAllObjects];
+    [_backupFiles removeAllObjects];
     
-    _isBackupPresent = false;
     _isMainFilePatched = false;
-    _backupFileURL = nil;
     NSError * error;
     NSArray * contents = [_fileManager contentsOfDirectoryAtPath:RCD_PATH error:&error];
-//    NSArray * contents = [_fileManager subpathsAtPath:RCD_PATH];   // Show subdirectory contents as well.
+    //NSArray * contents = [_fileManager subpathsAtPath:RCD_PATH];   // Show subdirectory contents as well.
     if (contents == NULL) {
         return;
     }
@@ -86,10 +83,6 @@
         }
         
         NSURL * fileUrl = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@", RCD_PATH, filename]];
-        if ([filename rangeOfString:@"rcd_backup_" options:NSAnchoredSearch].location != NSNotFound) {
-            comments = [comments stringByAppendingString:@"Backup file. "];
-            _isBackupPresent = true;
-        }
         
         if ([filename rangeOfString:@"rcd" options:NSAnchoredSearch].location != NSNotFound) {
             isPatched = [self isFilePatched:[fileUrl path]];
@@ -112,12 +105,23 @@
         NSDate * dateModified;
         [fileUrl getResourceValue:&dateModified forKey:NSURLContentModificationDateKey error:&error];
         
-        [_files addObject:[[RcdFile alloc] initWithParams:filename
-                                                 comments:comments
-                                                   md5sum:md5sum
-                                                isPatched:isPatched
-                                             dateModified:dateModified
-                                                  fileUrl:fileUrl]];
+        // Create an RcdFile object.
+        RcdFile * rcdFile = [[RcdFile alloc] initWithParams:filename
+                                                   comments:comments
+                                                     md5sum:md5sum
+                                                  isPatched:isPatched
+                                               dateModified:dateModified
+                                                    fileUrl:fileUrl];
+        
+        // Backup file?
+        if ([filename rangeOfString:@"rcd_backup_" options:NSAnchoredSearch].location != NSNotFound) {
+            comments = [@"Backup file. " stringByAppendingString:comments];
+            [rcdFile setComments:comments];
+            [rcdFile setIsBackupFile:true];
+            [_backupFiles addObject:rcdFile];
+        }
+        
+        [_files addObject:rcdFile];
     }
     
     [self setCommandLineToolStatus];
@@ -176,6 +180,24 @@
     // Then run the command to sign the newly created file.
     //    [self writeDataToProtectedFile:mutableData filePath:[NSString stringWithFormat:@"%@/rcd_new_unsigned", RCD_PATH] authExtForm:authExtForm];
     [self selfSignFile:[NSString stringWithFormat:@"%@/rcd", RCD_PATH] authExtForm:authExtForm];
+}
+
+
+/*
+ * This restores the given file as the main `rcd` file. This WILL overwrite the `rcd` file if exists already.
+ */
+- (void) restoreFromBackupFile:(RcdFile *)fileToRestore {
+    NSString * output;
+    NSString * processErrorDescription;
+    BOOL success = [self runProcessAsAdministrator:@"/bin/mv"
+                                     withArguments:@[@"-f",
+                                                     [[fileToRestore fileUrl] path],
+                                                     [NSString stringWithFormat:@"%@/rcd", RCD_PATH]]
+                                            output:&output
+                                  errorDescription:&processErrorDescription];
+    if (!success) {
+        [NSException raise:@"could_not_restore" format:processErrorDescription];
+    }
 }
 
 /*
