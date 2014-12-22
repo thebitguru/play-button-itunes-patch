@@ -3,7 +3,7 @@
 //  iTunes Play Button Patch
 //
 //  Created by Farhan Ahmad on 11/12/14.
-//  Copyright (c) 2014 thebitguru. All rights reserved.
+//  Copyright (c) 2014 Farhan Ahmad. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -23,7 +23,10 @@
 @property (weak) IBOutlet NSTextField *titleTextField;
 @property (weak) IBOutlet NSImageView *logoImage;
 @property (weak) IBOutlet GradientView *topBackground;
+@property (weak) IBOutlet NSTextField *commandLineToolsStatus;
+@property (weak) IBOutlet NSButton *installXcodeCommandLineToolsButton;
 
+- (IBAction)installXcodeCommandLineToolsButtonClicked:(id)sender;
 - (IBAction)showInFinderMenu:(id)sender;
 - (IBAction)aboutMenuItemClicked:(id)sender;
 - (IBAction)refreshButtonClicked:(id)sender;
@@ -36,6 +39,8 @@
     AboutWindowController * _aboutWindowController;
     NSFileCoordinator * _fileCoordinator;
     NSDateFormatter * _dateFormatter;
+    BOOL _lastCommandLineToolStatus;
+    BOOL _loadedOnce;
 }
 
 
@@ -44,6 +49,8 @@
     [_dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [_dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     
+    _lastCommandLineToolStatus = false;
+    _loadedOnce = false;
     _patcher = [[Patcher alloc] init];
     [_osVersion setStringValue:[[NSProcessInfo processInfo] operatingSystemVersionString]];
     [_logoImage setImage:[NSImage imageNamed:@"logo.png"]];
@@ -59,6 +66,8 @@
     
     // TODO: Figure out how to hookup the directory watch.
     
+    
+    // Yosemite+ styling.
     if ([NSVisualEffectView class]) {
         [_window setStyleMask:[_window styleMask] | NSFullSizeContentViewWindowMask];
         [_window setTitleVisibility:NSWindowTitleHidden];
@@ -81,9 +90,30 @@
     }
 }
 
+- (IBAction)installXcodeCommandLineToolsButtonClicked:(id)sender {
+    [self installXcodeCommandLineTools];
+}
+
+- (void) installXcodeCommandLineTools {
+    NSAlert * alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Xcode command line tools are required for signing the modified rcd file.  Without signing OS X will keep complaining that the signature is invalid.\n\nKicking off Xcode command line tools install, please follow the instructions and click the Refresh button in this app once the install has finished."];
+    [alert addButtonWithTitle:@"OK, kick it off..."];
+    [alert addButtonWithTitle:@"No, don't install"];
+    if ([alert runModal] == NSAlertSecondButtonReturn) {
+        return;
+    }
+    
+    // Kickoff the install.
+    [NSTask launchedTaskWithLaunchPath:@"/usr/bin/xcode-select" arguments:@[@"--install"]];
+}
+
 - (IBAction)showInFinderMenu:(id)sender {
     NSInteger selectedRow = [_tableView selectedRow];
     if (selectedRow == -1) return;
+    // TODO:
+//    [[NSWorkspace sharedWorkspace]
+//     selectFile:[[[[_patcher files] objectAtIndex:selectedRow] fileUrl] absoluteString]
+//     inFileViewerRootedAtPath:@""];
     NSArray * fileURLs = [NSArray arrayWithObjects:[[[_patcher files] objectAtIndex:selectedRow] fileUrl], nil];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
 }
@@ -96,8 +126,13 @@
     } else {
         [_status setStringValue:@"Unpatched."];
     }
-
-    [_restoreFromBackupButton setEnabled:[_patcher backupPresent]];
+    
+    if ([_patcher isBackupPresent]) {
+        [_restoreFromBackupButton setToolTip:@"Backup found, ready to restore."];
+    } else {
+        [_restoreFromBackupButton setToolTip:@"No backup found."];
+    }
+    [_restoreFromBackupButton setEnabled:[_patcher isBackupPresent]];
     
     
     // Animate the updated status label.
@@ -116,6 +151,22 @@
                        nil]];
     [animation setDuration:0.5];
     [[_status layer] addAnimation:animation forKey:@"updateAnimation"];
+    
+    // Animate the command line tools status only if it has changed.
+    if ((_lastCommandLineToolStatus != [_patcher areCommandLineToolsInstalled]) || !_loadedOnce) {
+        [[_commandLineToolsStatus layer] addAnimation:animation forKey:@"updateAnimation"];
+    }
+    _loadedOnce = true;
+    _lastCommandLineToolStatus = [_patcher areCommandLineToolsInstalled];
+    [_installXcodeCommandLineToolsButton setEnabled:!_lastCommandLineToolStatus];
+    
+    if ([_patcher areCommandLineToolsInstalled]) {
+        [_commandLineToolsStatus setStringValue:@"Installed."];
+        [_installXcodeCommandLineToolsButton setToolTip:@"Already installed."];
+    } else {
+        [_commandLineToolsStatus setStringValue:@"Not installed."];
+        [_installXcodeCommandLineToolsButton setToolTip:@"Click to install..."];
+    }
     
 //    CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
 //    [animation setDuration:0.25];
@@ -150,6 +201,19 @@
 
 - (IBAction)patchButtonClicked:(id)sender {
     NSAlert * alert = [[NSAlert alloc] init];
+    // Only do this if not already installed.
+    if (![_patcher areCommandLineToolsInstalled]) {
+        [alert setMessageText:@"Xcode command line tools are required for signing the modified rcd file.  Without signing OS X will keep complaining that the signature is invalid.\n\nWould you like to install Xcode command line tools?"];
+        [alert addButtonWithTitle:@"Yes, install Xcode command line tools"];
+        [alert addButtonWithTitle:@"No, I don't want to patch"];
+        if ([alert runModal] == NSAlertSecondButtonReturn) {
+            return;
+        } else {
+            [self installXcodeCommandLineTools];
+            return;
+        }
+    }
+    
     [alert setMessageText:@"You will now be asked for administrator password twice, since rcd file is in a privileged location this access is necessary to apply the patch."];
     [alert addButtonWithTitle:@"OK"];
     [alert addButtonWithTitle:@"Cancel"];

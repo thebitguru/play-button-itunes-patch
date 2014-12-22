@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7769FE471A47A357008971EB /* notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7769FE461A47A357008971EB /* notes.txt */; };
 		7772FEC81A15B4D40080FA5C /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 777958071A158CE000F04458 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		777958081A158CE000F04458 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777958071A158CE000F04458 /* Sparkle.framework */; };
 		7779580E1A158F9300F04458 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7779580D1A158F9300F04458 /* AboutWindowController.m */; };
@@ -48,24 +49,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7769FE461A47A357008971EB /* notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
 		777958071A158CE000F04458 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		7779580C1A158F9300F04458 /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
-		7779580D1A158F9300F04458 /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
-		777958101A159ADC00F04458 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		7779580C1A158F9300F04458 /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AboutWindowController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7779580D1A158F9300F04458 /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AboutWindowController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		777958101A159ADC00F04458 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 0; path = Credits.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		778FE4C21A144EAC00A3CE34 /* Play Button iTunes Patch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Play Button iTunes Patch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		778FE4C61A144EAC00A3CE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		778FE4C71A144EAC00A3CE34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		778FE4C81A144EAC00A3CE34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		778FE4CA1A144EAC00A3CE34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		778FE4C71A144EAC00A3CE34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		778FE4C81A144EAC00A3CE34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		778FE4CA1A144EAC00A3CE34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		778FE4CC1A144EAC00A3CE34 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		778FE4CF1A144EAC00A3CE34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		778FE4D51A144EAC00A3CE34 /* Play Button iTunes PatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Play Button iTunes PatchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		778FE4DA1A144EAC00A3CE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		778FE4DB1A144EAC00A3CE34 /* iTunes_Play_Button_PatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTunes_Play_Button_PatchTests.m; sourceTree = "<group>"; };
-		778FE4E51A14530A00A3CE34 /* Patcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patcher.h; sourceTree = "<group>"; };
+		778FE4DB1A144EAC00A3CE34 /* iTunes_Play_Button_PatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = iTunes_Play_Button_PatchTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		778FE4E51A14530A00A3CE34 /* Patcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Patcher.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		778FE4E61A14530A00A3CE34 /* Patcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patcher.m; sourceTree = "<group>"; };
-		778FE4E81A14736400A3CE34 /* RcdFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RcdFile.h; sourceTree = "<group>"; };
-		778FE4E91A14736400A3CE34 /* RcdFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RcdFile.m; sourceTree = "<group>"; };
+		778FE4E81A14736400A3CE34 /* RcdFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RcdFile.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		778FE4E91A14736400A3CE34 /* RcdFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RcdFile.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		77D3D3761A17BD0F00E427B4 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		77D3D3781A17C05200E427B4 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		77D3D3791A17C05200E427B4 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				77D3D3791A17C05200E427B4 /* GradientView.m */,
 				777958061A158CC300F04458 /* Frameworks */,
 				778FE4C51A144EAC00A3CE34 /* Supporting Files */,
+				7769FE461A47A357008971EB /* notes.txt */,
 			);
 			path = "iTunes Play Button Patch";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				778FE4CD1A144EAC00A3CE34 /* Images.xcassets in Resources */,
+				7769FE471A47A357008971EB /* notes.txt in Resources */,
 				77D3D3771A17BD0F00E427B4 /* logo.png in Resources */,
 				777958111A159ADC00F04458 /* Credits.html in Resources */,
 				778FE4D01A144EAC00A3CE34 /* MainMenu.xib in Resources */,

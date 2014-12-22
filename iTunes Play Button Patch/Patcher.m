@@ -3,7 +3,7 @@
 //  iTunes Play Button Patch
 //
 //  Created by Farhan Ahmad on 11/12/14.
-//  Copyright (c) 2014 thebitguru. All rights reserved.
+//  Copyright (c) 2014 Farhan Ahmad. All rights reserved.
 //
 
 #import "Patcher.h"
@@ -26,8 +26,9 @@
         _files = [[NSMutableArray alloc] init];
         _backupFileURL = nil;
         
-        _backupPresent = false;
+        _isBackupPresent = false;
         _isMainFilePatched = false;
+        _areCommandLineToolsInstalled = false;
         [self reloadFiles];
     }
     return self;
@@ -39,10 +40,30 @@
     return [fileData rangeOfData:_FIND_COMMAND_DATA options:kNilOptions range:NSMakeRange(0, [fileData length])].location == NSNotFound;
 }
 
+// Sets
+- (void) setCommandLineToolStatus {
+    NSPipe *pipe = [NSPipe pipe];
+    NSFileHandle *file = pipe.fileHandleForReading;
+    
+    NSTask *task = [[NSTask alloc] init];
+    task.launchPath = @"/usr/bin/xcode-select";
+    task.arguments = @[@"-p"];
+    task.standardOutput = pipe;
+    [task launch];
+    NSData *data = [file readDataToEndOfFile];
+    [file closeFile];
+    
+    NSString *processOutput = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    // If the returned value starts with slash (i.e. path of command line tools) then it means
+    // that command line tools are installed, otherwise, they are not installed.
+    // When they are not present the command says "xcode-select: error: unable to get active developer directory, use `xcode-select --switch` to set one (or see `man xcode-select`)"
+    _areCommandLineToolsInstalled = [processOutput hasPrefix:@"/"];
+}
+
 - (void) reloadFiles {
     [_files removeAllObjects];
     
-    _backupPresent = false;
+    _isBackupPresent = false;
     _isMainFilePatched = false;
     _backupFileURL = nil;
     NSError * error;
@@ -67,7 +88,7 @@
         NSURL * fileUrl = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@", RCD_PATH, filename]];
         if ([filename rangeOfString:@"rcd_backup_" options:NSAnchoredSearch].location != NSNotFound) {
             comments = [comments stringByAppendingString:@"Backup file. "];
-            _backupPresent = true;
+            _isBackupPresent = true;
         }
         
         if ([filename rangeOfString:@"rcd" options:NSAnchoredSearch].location != NSNotFound) {
@@ -98,6 +119,8 @@
                                              dateModified:dateModified
                                                   fileUrl:fileUrl]];
     }
+    
+    [self setCommandLineToolStatus];
 }
 
 
@@ -232,7 +255,7 @@
     NSAppleEventDescriptor * eventResult = [appleScript executeAndReturnError:&errorInfo];
     
     // Check errorInfo
-    if (! eventResult)
+    if (!eventResult)
     {
         // Describe common errors
         *errorDescription = nil;

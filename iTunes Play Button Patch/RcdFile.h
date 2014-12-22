@@ -4,7 +4,7 @@
 //  iTunes Play Button Patch
 //
 //  Created by Farhan Ahmad on 11/12/14.
-//  Copyright (c) 2014 thebitguru. All rights reserved.
+//  Copyright (c) 2014 Farhan Ahmad. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
