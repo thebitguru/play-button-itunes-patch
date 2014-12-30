@@ -58,6 +58,7 @@
     
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     [_window setTitle:[NSString stringWithFormat:@"%@ - %@", [_window title], version]];
+    [_window setMovableByWindowBackground:YES];
     [_titleTextField setStringValue:[NSString stringWithFormat:@"%@ - %@", [_titleTextField stringValue], version]];
     
     [_topBackground setEndingColor:[NSColor colorWithCalibratedRed:38.0/255 green:90.0/255 blue:158.0/255 alpha:1.0]];
@@ -65,17 +66,26 @@
     [_topBackground setAngle:270];
     [_topBackground setNeedsDisplay:YES];
     
+    [self refreshView];
+    
     // TODO: Figure out how to hookup the directory watch.
     
     
-    // Yosemite+ styling.
-    if ([NSVisualEffectView class]) {
-        [_window setStyleMask:[_window styleMask] | NSFullSizeContentViewWindowMask];
-        [_window setTitleVisibility:NSWindowTitleHidden];
-        [_window setTitlebarAppearsTransparent:YES];
-    }
     
-    [self refreshView];
+    // Yosemite+ styling.
+    
+    Class vibrantClass = NSClassFromString(@"NSVisualEffectView");
+    if (vibrantClass) {
+//        [_window setStyleMask:[_window styleMask] | NSFullSizeContentViewWindowMask];
+//        [_window setTitleVisibility:NSWindowTitleHidden];
+//        [_window setTitlebarAppearsTransparent:YES];
+        
+//        [_window setStyleMask:[_window styleMask] | (1 << 15)];  // NSFullSizeContentViewWindowMask
+//        [_window performSelector:NSSelectorFromString(@"setTitleVisibility:")
+//                      withObject:[NSNumber numberWithInt:1]];   // NSWindowTitleHidden
+//        [_window performSelector:NSSelectorFromString(@"setTitlebarAppearsTransparent:")
+//                      withObject:[NSNumber numberWithBool:YES]];
+    }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
