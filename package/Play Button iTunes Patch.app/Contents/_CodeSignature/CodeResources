@@ -16,7 +16,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rT0vOXIHyDlbS4GbCBj2jeYZ3M4=
+			alPCHSAchsevgfkDA0DtVH5z7ek=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -25,6 +25,15 @@
 		<data>
 		XwuKKr40fG55Rfl6dI+D6tF7Mco=
 		</data>
+		<key>Resources/en.lproj/MainMenu.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yOmVDHUdroTvnnCfx3SlCa9+zkg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>Resources/logo-large.png</key>
 		<data>
 		yd0SMhlTwlX70rY8XdBW/DpCuSE=
@@ -35,7 +44,7 @@
 		</data>
 		<key>Resources/notes.txt</key>
 		<data>
-		tQHtPK251mCacsq2HS2Gwdg4Oak=
+		TRCJEIckaU5CbhV8TMNYb3j/gaw=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -52,7 +61,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rT0vOXIHyDlbS4GbCBj2jeYZ3M4=
+			alPCHSAchsevgfkDA0DtVH5z7ek=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -61,6 +70,15 @@
 		<data>
 		XwuKKr40fG55Rfl6dI+D6tF7Mco=
 		</data>
+		<key>Resources/en.lproj/MainMenu.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yOmVDHUdroTvnnCfx3SlCa9+zkg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>Resources/logo-large.png</key>
 		<data>
 		yd0SMhlTwlX70rY8XdBW/DpCuSE=
@@ -71,7 +89,7 @@
 		</data>
 		<key>Resources/notes.txt</key>
 		<data>
-		tQHtPK251mCacsq2HS2Gwdg4Oak=
+		TRCJEIckaU5CbhV8TMNYb3j/gaw=
 		</data>
 	</dict>
 	<key>rules</key>

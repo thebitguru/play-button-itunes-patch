@@ -58,6 +58,7 @@
 		77D3D3791A17C05200E427B4 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		77D3D37B1A17CAA300E427B4 /* logo-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-large.png"; sourceTree = "<group>"; };
 		77D77A2B1A158B8C0053880F /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
+		77FAC0761A53661E00D23FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +301,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				778FE4CF1A144EAC00A3CE34 /* Base */,
+				77FAC0761A53661E00D23FCA /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -394,7 +396,9 @@
 				);
 				INFOPLIST_FILE = "iTunes Play Button Patch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "Play Button iTunes Patch";
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -409,7 +413,9 @@
 				);
 				INFOPLIST_FILE = "iTunes Play Button Patch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "Play Button iTunes Patch";
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};

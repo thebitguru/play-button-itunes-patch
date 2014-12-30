@@ -196,7 +196,7 @@
                                             output:&output
                                   errorDescription:&processErrorDescription];
     if (!success) {
-        [NSException raise:@"could_not_restore" format:processErrorDescription];
+        [NSException raise:@"could_not_restore" format:@"%@", processErrorDescription];
     }
 }
 

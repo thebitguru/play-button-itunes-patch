@@ -1,0 +1,123 @@
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "13Q-h0-5VA"; */
+"13Q-h0-5VA.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "iTunes Play Button Patch"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "iTunes Play Button Patch";
+
+/* Class = "NSMenuItem"; title = "Quit iTunes Play Button Patch"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit iTunes Play Button Patch";
+
+/* Class = "NSMenuItem"; title = "About iTunes Play Button Patch"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About iTunes Play Button Patch";
+
+/* Class = "NSTextFieldCell"; title = "This program will patch the Remote Control Daemon to prevent it from starting iTunes whenever you press the play button on the keyboard or an external remote control. This will only prevent iTunes from starting, all other functions (like play/pause while iTunes is _running_) will continue to work as before.\n\nAlso, this program will backup the original file in case if you would like to restore the original functionality.\n                                                                               \nThis program comes with ABSOLUTELY NO WARRANTY; please see the license in the about window."; ObjectID = "5zj-nX-X02"; */
+"5zj-nX-X02.title" = "This program will patch the Remote Control Daemon to prevent it from starting iTunes whenever you press the play button on the keyboard or an external remote control. This will only prevent iTunes from starting, all other functions (like play/pause while iTunes is _running_) will continue to work as before.\n\nAlso, this program will backup the original file in case if you would like to restore the original functionality.\n                                                                               \nThis program comes with ABSOLUTELY NO WARRANTY; please see the license in the about window.";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Help";
+
+/* Class = "NSMenuItem"; title = "iTunes Play Button Patch Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "iTunes Play Button Patch Help";
+
+/* Class = "NSTextFieldCell"; title = "Status..."; ObjectID = "G1z-cC-3e8"; */
+"G1z-cC-3e8.title" = "Status...";
+
+/* Class = "NSTextFieldCell"; title = "OS X Version"; ObjectID = "GhD-ry-KTY"; */
+"GhD-ry-KTY.title" = "OS X Version";
+
+/* Class = "NSTextFieldCell"; title = "Play Button iTunes Patch"; ObjectID = "Iq8-Cl-4lh"; */
+"Iq8-Cl-4lh.title" = "Play Button iTunes Patch";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Bring All to Front";
+
+/* Class = "NSButtonCell"; title = "Restore from Backup"; ObjectID = "MW9-WL-0Sr"; */
+"MW9-WL-0Sr.title" = "Restore from Backup";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Services";
+
+/* Class = "NSTextFieldCell"; title = "Version..."; ObjectID = "NbS-61-7xA"; */
+"NbS-61-7xA.title" = "Version...";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimize";
+
+/* Class = "NSMenuItem"; title = "Hide iTunes Play Button Patch"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide iTunes Play Button Patch";
+
+/* Class = "NSWindow"; title = "Play Button iTunes Patch"; ObjectID = "QvC-M9-y7g"; */
+"QvC-M9-y7g.title" = "Play Button iTunes Patch";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Zoom";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Hide Others";
+
+/* Class = "NSTextFieldCell"; title = "Xcode command line tool status..."; ObjectID = "WR2-Oo-7VU"; */
+"WR2-Oo-7VU.title" = "Xcode command line tool status...";
+
+/* Class = "NSTableColumn"; headerCell.title = "Comments"; ObjectID = "WnR-3V-Xbj"; */
+"WnR-3V-Xbj.headerCell.title" = "Comments";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Z9V-93-fYL"; */
+"Z9V-93-fYL.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "cCB-HD-P0w"; */
+"cCB-HD-P0w.title" = "Check for Updates...";
+
+/* Class = "NSTableColumn"; headerCell.title = "MD5 Sum"; ObjectID = "cRy-vV-fvo"; */
+"cRy-vV-fvo.headerCell.title" = "MD5 Sum";
+
+/* Class = "NSTextFieldCell"; title = "Status"; ObjectID = "d7s-oT-FDS"; */
+"d7s-oT-FDS.title" = "Status";
+
+/* Class = "NSButtonCell"; title = "Patch"; ObjectID = "f02-cN-DLs"; */
+"f02-cN-DLs.title" = "Patch";
+
+/* Class = "NSTableColumn"; headerCell.title = "Date Modified"; ObjectID = "ftU-vr-HiF"; */
+"ftU-vr-HiF.headerCell.title" = "Date Modified";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "g1O-qU-J5f"; */
+"g1O-qU-J5f.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "Show in Finder..."; ObjectID = "gmX-kv-hqZ"; */
+"gmX-kv-hqZ.title" = "Show in Finder...";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Services";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "j4e-Ox-VNY"; */
+"j4e-Ox-VNY.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Xcode Command Line Tools"; ObjectID = "lIE-fA-jed"; */
+"lIE-fA-jed.title" = "Xcode Command Line Tools";
+
+/* Class = "NSButtonCell"; title = "Refresh"; ObjectID = "pvz-8b-ccj"; */
+"pvz-8b-ccj.title" = "Refresh";
+
+/* Class = "NSButtonCell"; title = "Install"; ObjectID = "sta-26-Im5"; */
+"sta-26-Im5.title" = "Install";
+
+/* Class = "NSTableColumn"; headerCell.title = "File Name"; ObjectID = "uJg-zm-EyF"; */
+"uJg-zm-EyF.headerCell.title" = "File Name";
+
+/* Class = "NSMenu"; title = "iTunes Play Button Patch"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "iTunes Play Button Patch";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Help";

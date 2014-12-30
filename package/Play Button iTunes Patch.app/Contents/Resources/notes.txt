@@ -1,7 +1,7 @@
- * Implemented the restore function.
- * Removed Sparkle for now.
 
 
 ------------------------------------------
 TODO:
- * Figure out code signing and dmg creation.
+
+
+DMG based on: http://mac101.net/content/how-to/how-to-create-dmg-art-for-fancy-application-installations/

@@ -69,23 +69,6 @@
     [self refreshView];
     
     // TODO: Figure out how to hookup the directory watch.
-    
-    
-    
-    // Yosemite+ styling.
-    
-    Class vibrantClass = NSClassFromString(@"NSVisualEffectView");
-    if (vibrantClass) {
-//        [_window setStyleMask:[_window styleMask] | NSFullSizeContentViewWindowMask];
-//        [_window setTitleVisibility:NSWindowTitleHidden];
-//        [_window setTitlebarAppearsTransparent:YES];
-        
-//        [_window setStyleMask:[_window styleMask] | (1 << 15)];  // NSFullSizeContentViewWindowMask
-//        [_window performSelector:NSSelectorFromString(@"setTitleVisibility:")
-//                      withObject:[NSNumber numberWithInt:1]];   // NSWindowTitleHidden
-//        [_window performSelector:NSSelectorFromString(@"setTitlebarAppearsTransparent:")
-//                      withObject:[NSNumber numberWithBool:YES]];
-    }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
