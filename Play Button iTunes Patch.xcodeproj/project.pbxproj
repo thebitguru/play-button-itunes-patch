@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		771DC40C1AA2A9BA0015B9D3 /* CustomLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 771DC40B1AA2A9BA0015B9D3 /* CustomLogFormatter.m */; };
-		7769FE471A47A357008971EB /* notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7769FE461A47A357008971EB /* notes.txt */; };
 		7779580E1A158F9300F04458 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7779580D1A158F9300F04458 /* AboutWindowController.m */; };
 		777958111A159ADC00F04458 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 777958101A159ADC00F04458 /* Credits.html */; };
 		778FE4C91A144EAC00A3CE34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 778FE4C81A144EAC00A3CE34 /* AppDelegate.m */; };
@@ -285,7 +284,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				778FE4CD1A144EAC00A3CE34 /* Images.xcassets in Resources */,
-				7769FE471A47A357008971EB /* notes.txt in Resources */,
 				77D3D3771A17BD0F00E427B4 /* logo.png in Resources */,
 				777958111A159ADC00F04458 /* Credits.html in Resources */,
 				778FE4D01A144EAC00A3CE34 /* MainMenu.xib in Resources */,

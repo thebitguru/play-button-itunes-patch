@@ -1,14 +1,5 @@
-* Added CocoaLumberjack for logging + added log statements in all the appropriate places.  Logging is quite verbose because the utility will ideally be run only once or twice.
-* Created custom log formatter for logging the time, log level, file name, and line number.
-* Added a new pch file for setting the logging level.
-* Added a new report issue button that provides the options and instructs user to attach the log files.
-* Added a new menu entry to opening the log file directory.
-* Added a dialog with some info after successful restore.
-* Now killing and restarting the rcd process after patch or restore.  Also, now instructing the user to restart if the patch doesn't seem to work even with the rcd process restart.
-* Increased the version from 0.9 to 1.0.
-* Now ignoring more irrelevant files in .gitignore.  Decided to commit Pods to repo because both github and Cocoa Pods recommend it, and I agree with their reasoning (https://github.com/github/gitignore/blob/master/Objective-C.gitignore#L19-L20, http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control)
-* Fixed the error return parameter type in Patcher.patch.
-* Cleaned up a rogue SUUpdater reference.
+* Fixing icons.
+* Removing notes.txt from the build.
 
 ------------------------------------------
 TODO:
