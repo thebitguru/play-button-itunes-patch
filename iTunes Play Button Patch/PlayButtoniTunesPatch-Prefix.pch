@@ -1,0 +1,32 @@
+//
+//  PlayButtoniTunesPatch-Prefix.pch
+//  Play Button iTunes Patch
+//
+//  Created by Farhan Ahmad on 1/31/15.
+//  Copyright (c) 2015 thebitguru. All rights reserved.
+//
+
+
+#ifndef Play_Button_iTunes_Patch_PlayButtoniTunesPatch_Prefix_pch
+#define Play_Button_iTunes_Patch_PlayButtoniTunesPatch_Prefix_pch
+
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+
+//#ifdef DEBUG
+//    static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+//#else
+//    static const DDLogLevel ddLogLevel = DDLogLevelWarning;
+//#endif
+
+// Force the log to be written right away.
+#ifdef LOG_ASYNC_ENABLED
+    #undef LOG_ASYNC_ENABLED
+#endif
+#define LOG_ASYNC_ENABLED NO
+
+#endif

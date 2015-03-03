@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
@@ -27,7 +27,6 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="AhV-xa-6ej" customClass="SUUpdater"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="iTunes Play Button Patch" id="1Xt-HY-uBw">
@@ -38,6 +37,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="4UO-OA-mLg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Open Log Files Directory..." id="ufy-XI-UYr">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="viewLog:" target="-1" id="FL1-YT-uzs"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Check for Updates..." hidden="YES" enabled="NO" id="cCB-HD-P0w">
@@ -268,15 +273,23 @@ DQ
                                 <rect key="frame" x="101" y="5" width="636" height="153"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="5zj-nX-X02">
                                     <font key="font" metaFont="system"/>
-                                    <string key="title">This program will patch the Remote Control Daemon to prevent it from starting iTunes whenever you press the play button on the keyboard or an external remote control. This will only prevent iTunes from starting, all other functions (like play/pause while iTunes is _running_) will continue to work as before.
-
-Also, this program will backup the original file in case if you would like to restore the original functionality.
+                                    <mutableString key="title">This program will patch the Remote Control Daemon to prevent it from starting iTunes whenever you press the play button on the keyboard or an external remote control. This will only prevent iTunes from starting, all other functions (like play/pause while iTunes is _running_) will continue to work as before.  The original file is backed up in case you would like to restore the original functionality.
                                                                                
-This program comes with ABSOLUTELY NO WARRANTY; please see the license in the about window.</string>
+This program comes with ABSOLUTELY NO WARRANTY; please see the license in the about window.</mutableString>
                                     <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTP-MH-6GI">
+                                <rect key="frame" x="558" y="13" width="178" height="32"/>
+                                <buttonCell key="cell" type="push" title="Report an issue..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SVh-NV-q24">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="reportAnIssueClicked:" target="-1" id="Xqp-Wa-6sy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="9ug-9D-xC6" firstAttribute="leading" secondItem="9MH-Wh-Lsx" secondAttribute="trailing" constant="6" id="1Ky-c1-125"/>
@@ -371,6 +384,7 @@ This program comes with ABSOLUTELY NO WARRANTY; please see the license in the ab
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="D4c-3R-np3"/>
             </connections>
+            <point key="canvasLocation" x="992" y="372.5"/>
         </menu>
     </objects>
 </document>

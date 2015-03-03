@@ -22,7 +22,8 @@ static NSString * const RCD_PATH = @"/System/Library/CoreServices/rcd.app/Conten
 - (id) init;
 - (BOOL) isFilePatched: (NSString *) filePath;
 - (void) reloadFiles;
-- (void) patchFile: (NSError *) error;
+- (BOOL) patchFile: (NSError **) error;
 - (void) restoreFromBackupFile:(RcdFile *)fileToRestore;
+- (BOOL) restartRcdProcesses;
 
 @end

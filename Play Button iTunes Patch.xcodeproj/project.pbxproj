@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		771DC40C1AA2A9BA0015B9D3 /* CustomLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 771DC40B1AA2A9BA0015B9D3 /* CustomLogFormatter.m */; };
 		7769FE471A47A357008971EB /* notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7769FE461A47A357008971EB /* notes.txt */; };
 		7779580E1A158F9300F04458 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7779580D1A158F9300F04458 /* AboutWindowController.m */; };
 		777958111A159ADC00F04458 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 777958101A159ADC00F04458 /* Credits.html */; };
@@ -21,6 +22,7 @@
 		77D3D37A1A17C05200E427B4 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D3791A17C05200E427B4 /* GradientView.m */; };
 		77D3D37C1A17CAA300E427B4 /* logo-large.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D3D37B1A17CAA300E427B4 /* logo-large.png */; };
 		77D77A2C1A158B8C0053880F /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D77A2B1A158B8C0053880F /* AboutWindow.xib */; };
+		CF8267A0537EDD6080FC5E99 /* libPods-Play Button iTunes Patch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A750E233DAEAFD38EBABF80F /* libPods-Play Button iTunes Patch.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C6BE9E333C54DE558D5C7B8 /* Pods-Play Button iTunes Patch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play Button iTunes Patch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Play Button iTunes Patch/Pods-Play Button iTunes Patch.release.xcconfig"; sourceTree = "<group>"; };
+		4F8F7326CC433ABE3044890D /* Pods-Play Button iTunes Patch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play Button iTunes Patch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Play Button iTunes Patch/Pods-Play Button iTunes Patch.debug.xcconfig"; sourceTree = "<group>"; };
+		771DC40A1AA2A9BA0015B9D3 /* CustomLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLogFormatter.h; sourceTree = "<group>"; };
+		771DC40B1AA2A9BA0015B9D3 /* CustomLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLogFormatter.m; sourceTree = "<group>"; };
+		772F9ED41A7DC55700C7B543 /* PlayButtoniTunesPatch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PlayButtoniTunesPatch-Prefix.pch"; path = "iTunes Play Button Patch/PlayButtoniTunesPatch-Prefix.pch"; sourceTree = "<group>"; };
 		7769FE461A47A357008971EB /* notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
-		777958071A158CE000F04458 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		7779580C1A158F9300F04458 /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AboutWindowController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7779580D1A158F9300F04458 /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AboutWindowController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		777958101A159ADC00F04458 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 0; path = Credits.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
@@ -59,6 +65,7 @@
 		77D3D37B1A17CAA300E427B4 /* logo-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-large.png"; sourceTree = "<group>"; };
 		77D77A2B1A158B8C0053880F /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		77FAC0761A53661E00D23FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		A750E233DAEAFD38EBABF80F /* libPods-Play Button iTunes Patch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Play Button iTunes Patch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8267A0537EDD6080FC5E99 /* libPods-Play Button iTunes Patch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,10 +87,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37959528DF648EB7955873FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A750E233DAEAFD38EBABF80F /* libPods-Play Button iTunes Patch.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		40B5F3EF2231FD8CB76D9109 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F8F7326CC433ABE3044890D /* Pods-Play Button iTunes Patch.debug.xcconfig */,
+				2C6BE9E333C54DE558D5C7B8 /* Pods-Play Button iTunes Patch.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		771DC4091AA2A9860015B9D3 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				771DC40A1AA2A9BA0015B9D3 /* CustomLogFormatter.h */,
+				771DC40B1AA2A9BA0015B9D3 /* CustomLogFormatter.m */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
 		777958061A158CC300F04458 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				777958071A158CE000F04458 /* Sparkle.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -100,9 +133,12 @@
 		778FE4B91A144EAC00A3CE34 = {
 			isa = PBXGroup;
 			children = (
+				772F9ED41A7DC55700C7B543 /* PlayButtoniTunesPatch-Prefix.pch */,
 				778FE4C41A144EAC00A3CE34 /* iTunes Play Button Patch */,
 				778FE4D81A144EAC00A3CE34 /* iTunes Play Button PatchTests */,
 				778FE4C31A144EAC00A3CE34 /* Products */,
+				40B5F3EF2231FD8CB76D9109 /* Pods */,
+				37959528DF648EB7955873FF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +154,7 @@
 		778FE4C41A144EAC00A3CE34 /* iTunes Play Button Patch */ = {
 			isa = PBXGroup;
 			children = (
+				771DC4091AA2A9860015B9D3 /* Logging */,
 				7779580F1A158FA900F04458 /* About Window */,
 				778FE4CE1A144EAC00A3CE34 /* MainMenu.xib */,
 				778FE4C71A144EAC00A3CE34 /* AppDelegate.h */,
@@ -172,9 +209,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 778FE4DF1A144EAC00A3CE34 /* Build configuration list for PBXNativeTarget "Play Button iTunes Patch" */;
 			buildPhases = (
+				FA161A16BAE12069639205DA /* Check Pods Manifest.lock */,
 				778FE4BE1A144EAC00A3CE34 /* Sources */,
 				778FE4BF1A144EAC00A3CE34 /* Frameworks */,
 				778FE4C01A144EAC00A3CE34 /* Resources */,
+				24030C661761275179079706 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,11 +303,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		24030C661761275179079706 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Play Button iTunes Patch/Pods-Play Button iTunes Patch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA161A16BAE12069639205DA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		778FE4BE1A144EAC00A3CE34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771DC40C1AA2A9BA0015B9D3 /* CustomLogFormatter.m in Sources */,
 				778FE4E71A14530A00A3CE34 /* Patcher.m in Sources */,
 				7779580E1A158F9300F04458 /* AboutWindowController.m in Sources */,
 				778FE4EA1A14736400A3CE34 /* RcdFile.m in Sources */,
@@ -387,6 +460,7 @@
 		};
 		778FE4E01A144EAC00A3CE34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F8F7326CC433ABE3044890D /* Pods-Play Button iTunes Patch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -394,9 +468,12 @@
 					"$(inherited)",
 					"./**",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iTunes Play Button Patch/PlayButtoniTunesPatch-Prefix.pch";
 				INFOPLIST_FILE = "iTunes Play Button Patch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "Play Button iTunes Patch";
 				SDKROOT = macosx10.9;
 			};
@@ -404,6 +481,7 @@
 		};
 		778FE4E11A144EAC00A3CE34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C6BE9E333C54DE558D5C7B8 /* Pods-Play Button iTunes Patch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -411,6 +489,8 @@
 					"$(inherited)",
 					"./**",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iTunes Play Button Patch/PlayButtoniTunesPatch-Prefix.pch";
 				INFOPLIST_FILE = "iTunes Play Button Patch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;

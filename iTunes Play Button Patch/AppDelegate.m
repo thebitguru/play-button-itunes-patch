@@ -11,7 +11,10 @@
 #import "RcdFile.h"
 #import "AboutWindowController.h"
 #import "GradientView.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import "CustomLogFormatter.h"
 @import QuartzCore;
+
 
 @interface AppDelegate ()
 
@@ -32,6 +35,8 @@
 - (IBAction)refreshButtonClicked:(id)sender;
 - (IBAction)restoreFromBackupButtonClicked:(id)sender;
 - (IBAction)patchButtonClicked:(id)sender;
+- (IBAction)viewLog:(id)sender;
+- (IBAction)reportAnIssueClicked:(id)sender;
 @end
 
 @implementation AppDelegate {
@@ -41,90 +46,147 @@
     NSDateFormatter * _dateFormatter;
     BOOL _lastCommandLineToolStatus;
     BOOL _loadedOnce;
+    DDFileLogger * _fileLogger;
 }
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    _dateFormatter = [[NSDateFormatter alloc] init];
-//    [_dateFormatter setDateFormat:@"MM/dd/Y h:mm:ss a"];
-    [_dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    [_dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    _fileLogger = [[DDFileLogger alloc] init];
+    _fileLogger.logFormatter = [[CustomLogFormatter alloc] init];
+    [DDLog addLogger:_fileLogger];
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     _lastCommandLineToolStatus = false;
     _loadedOnce = false;
-    _patcher = [[Patcher alloc] init];
-    [_osVersion setStringValue:[[NSProcessInfo processInfo] operatingSystemVersionString]];
     [_logoImage setImage:[NSImage imageNamed:@"logo.png"]];
     
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    DDLogInfo(@"--------------- New session - Version %@ ---------------", version);
+    DDLogInfo(@"Log file directory: %@", [[_fileLogger logFileManager] logsDirectory]);
     [_window setTitle:[NSString stringWithFormat:@"%@ - %@", [_window title], version]];
     [_window setMovableByWindowBackground:YES];
     [_titleTextField setStringValue:[NSString stringWithFormat:@"%@ - %@", [_titleTextField stringValue], version]];
+    
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    //    [_dateFormatter setDateFormat:@"MM/dd/Y h:mm:ss a"];
+    [_dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [_dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    
+    NSString * osVersion = [[NSProcessInfo processInfo] operatingSystemVersionString];
+    [_osVersion setStringValue:osVersion];
+    DDLogInfo(@"OS Version: %@", osVersion);
     
     [_topBackground setEndingColor:[NSColor colorWithCalibratedRed:38.0/255 green:90.0/255 blue:158.0/255 alpha:1.0]];
     [_topBackground setStartingColor:[NSColor colorWithCalibratedRed:48.0/255 green:118.0/255 blue:209.0/255 alpha:1.0]];
     [_topBackground setAngle:270];
     [_topBackground setNeedsDisplay:YES];
     
-    [self refreshView];
+    _patcher = [[Patcher alloc] init];
     
+    [self refreshView];
     // TODO: Figure out how to hookup the directory watch.
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+    DDLogInfo(@"=============== applicationWillTerminate ===============");
 }
 
 // Enables/disables the "Show in Finder" menu.
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    if ([_tableView selectedRow] == -1) {
-        return NO;
-    } else {
-        return YES;
+    if ([menuItem action] == @selector(showInFinderMenu:)) {
+        if ([_tableView selectedRow] == -1) {
+            return NO;
+        } else {
+            return YES;
+        }
     }
+    
+    return YES;
 }
 
 - (IBAction)installXcodeCommandLineToolsButtonClicked:(id)sender {
     [self installXcodeCommandLineTools];
 }
 
+- (IBAction)reportAnIssueClicked:(id)sender {
+    NSAlert * alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"You can report issues on the github project page (ideal, but requires a github account), or directly through email.  Which would you prefer?"];
+    [alert addButtonWithTitle:@"Github"];
+    [alert addButtonWithTitle:@"Email"];
+    [alert addButtonWithTitle:@"Cancel"];
+    
+    NSString * message = nil;
+    NSString * url = nil;
+    NSModalResponse response = [alert runModal];
+    if (response == NSAlertFirstButtonReturn) {   // github
+        message = @"Opening the log file directory and the github new issue page.  Please submit a new issue describing your situation and paste the text from the log file.";
+        url = @"https://github.com/thebitguru/play-button-itunes-patch/issues/new";
+    } else if (response == NSAlertSecondButtonReturn) {  // email.
+        message = @"Opening the log file directory and triggering email.  Please attach the log files to your email.\n\nIn case if this does not launch your email application, please manually send an email to farhan@thebitguru.com.";
+        url = @"mailto:farhan@thebitguru.com?subject=New%20Play%20Button%20iTunes%20Patch%20issue&body=Please%20remember%20to%20include%20the%20log%20files...";
+    } else {
+        return;
+    }
+
+    alert = [[NSAlert alloc] init];
+    [alert setMessageText:message];
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Cancel"];
+    if ([alert runModal] == NSAlertSecondButtonReturn) {
+        return;
+    }
+    
+    NSURL * logDirectory = [NSURL fileURLWithPath:[[_fileLogger logFileManager] logsDirectory]];
+    [[NSWorkspace sharedWorkspace] openURL:logDirectory];
+    
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+}
+
 - (void) installXcodeCommandLineTools {
+    DDLogInfo(@"Asking for command line tools install...");
     NSAlert * alert = [[NSAlert alloc] init];
     [alert setMessageText:@"Xcode command line tools are required for signing the modified rcd file.  Without signing OS X will keep complaining that the signature is invalid.\n\nKicking off Xcode command line tools install, please follow the instructions and click the Refresh button in this app once the install has finished."];
     [alert addButtonWithTitle:@"OK, kick it off..."];
     [alert addButtonWithTitle:@"No, don't install"];
     if ([alert runModal] == NSAlertSecondButtonReturn) {
+        DDLogInfo(@"User decided not to install.");
         return;
     }
     
+    DDLogInfo(@"Kicking off the command line tools install: /usr/bin/xcode-select --install");
     // Kickoff the install.
     [NSTask launchedTaskWithLaunchPath:@"/usr/bin/xcode-select" arguments:@[@"--install"]];
 }
 
 - (IBAction)showInFinderMenu:(id)sender {
     NSInteger selectedRow = [_tableView selectedRow];
-    if (selectedRow == -1) return;
-    // TODO:
-//    [[NSWorkspace sharedWorkspace]
-//     selectFile:[[[[_patcher files] objectAtIndex:selectedRow] fileUrl] absoluteString]
-//     inFileViewerRootedAtPath:@""];
+    if (selectedRow == -1) {
+        DDLogError(@"showInFinderMenu got unexpected selectedRow == -1");
+        return;
+    }
     NSArray * fileURLs = [NSArray arrayWithObjects:[[[_patcher files] objectAtIndex:selectedRow] fileUrl], nil];
     [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
 }
 
 - (void) refreshView {
+    DDLogInfo(@"Refreshing view...");
     [_patcher reloadFiles];
     [_tableView reloadData];
     if ([_patcher isMainFilePatched]) {
+        DDLogInfo(@"File is already patched.");
         [_status setStringValue:@"Patched."];
     } else {
+        DDLogInfo(@"File is unpatched.");
         [_status setStringValue:@"Unpatched."];
     }
     
     if ([[_patcher backupFiles] count] > 0) {
+        DDLogInfo(@"Backups found, enabling restore button.");
         [_restoreFromBackupButton setEnabled:true];
         [_restoreFromBackupButton setToolTip:@"Backups found, ready to restore."];
     } else {
+        DDLogInfo(@"No backups found.");
         [_restoreFromBackupButton setToolTip:@"No backup found."];
         [_restoreFromBackupButton setEnabled:false];
     }
@@ -187,14 +249,16 @@
 //    [layer addAnimation:animation forKey:animation.keyPath];
     
 //    [[_status layer] setTransform:transform];
-    
+    DDLogVerbose(@"Finished refreshing view.");
 }
 
 - (IBAction)restoreFromBackupButtonClicked:(id)sender {
+    DDLogInfo(@"Restore from backup clicked...");
     RcdFile * fileToRestore = nil;
     
     // If there are multiple backup files then decide which one to use.
     if ([[_patcher backupFiles] count] > 1) {
+        DDLogInfo(@"There are multiple backup files...");
         NSAlert * alert = [[NSAlert alloc] init];
         
         // Find latest backup file.
@@ -212,6 +276,7 @@
         
         if ([_tableView selectedRow] != -1) {
             RcdFile * selectedFile = [[_patcher files] objectAtIndex:[_tableView selectedRow]];
+            DDLogInfo(@"User has selected a file in table view: %@", [selectedFile name]);
             // If the user has already selected a backup file then we confirm a few things.
             if ([selectedFile isBackupFile]) {
                 // If the selected file is older than the *latest* backup file then confirm.
@@ -223,6 +288,7 @@
                     [alert addButtonWithTitle:@"Yes, restore from the older version"];
                     [alert addButtonWithTitle:@"No, stop, I am going to select a different file"];
                     if ([alert runModal] == NSAlertSecondButtonReturn) {
+                        DDLogInfo(@"User decided to stop.");
                         return;
                     } else {
                         fileToRestore = selectedFile;
@@ -231,6 +297,8 @@
                     // Otherwise, this is the latest file so we don't need to check anything.
                     fileToRestore = selectedFile;
                 }
+            } else {
+                DDLogInfo(@"Selected file is not a backup file.");
             }
         }
         
@@ -244,85 +312,117 @@
             [alert addButtonWithTitle:@"Yes"];
             [alert addButtonWithTitle:@"No, stop"];
             if ([alert runModal] == NSAlertSecondButtonReturn) {
+                DDLogInfo(@"User did not select a file and decided not to proceed with the latest file.");
                 alert = [[NSAlert alloc] init];
                 [alert setMessageText:@"In that case select a specific backup file from the list and click the restore button again."];
                 [alert addButtonWithTitle:@"OK"];
                 [alert runModal];
                 return;
             } else {
+                DDLogInfo(@"Using the latest backup file: %@", [latestFile name]);
                 fileToRestore = latestFile;
             }
         }
     } else {
         fileToRestore = [[_patcher backupFiles] objectAtIndex:0];
+        DDLogInfo(@"There is only one backup file: %@", [fileToRestore name]);
     }
     
     // Finally restore from the decided backup file.
     @try {
+        DDLogInfo(@"Requesting restore from patcher.");
         [_patcher restoreFromBackupFile:fileToRestore];
     }
     @catch (NSException *exception) {
+        DDLogError(@"Problem restoring from backup: %@", [exception description]);
         NSAlert * alert = [[NSAlert alloc] init];
         [alert setInformativeText:[exception description]];
         [alert addButtonWithTitle:@"OK"];
         [alert runModal];
-        NSLog(@"Problem restoring from backup: %@", [exception description]);
+        [self refreshView];
+        return;
     }
     [self refreshView];
+    
+    // Backup was restored
+    [self refreshView];
+    NSAlert * alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Backup Restored"];
+    [alert setInformativeText:@"The backup file was successfully restored. The original functionality should now be back.\n\nYou should not have to restart your system, but in case if it looks like this did not change the behavior then please restart your system before reporting it as an issue."];
+    [alert runModal];
+}
+
+- (IBAction)viewLog:(id)sender {
+    DDLogDebug(@"Showing the log file directory in Finder: %@", [[_fileLogger logFileManager] logsDirectory]);
+    NSURL * logDirectory = [NSURL fileURLWithPath:[[_fileLogger logFileManager] logsDirectory]];
+    [[NSWorkspace sharedWorkspace] openURL:logDirectory];
 }
 
 - (IBAction)patchButtonClicked:(id)sender {
+    DDLogInfo(@"Use requested to patch...");
+    
     NSAlert * alert = [[NSAlert alloc] init];
     // Only do this if not already installed.
     if (![_patcher areCommandLineToolsInstalled]) {
+        DDLogInfo(@"Command line tools are not installed, confirming to proceed with the install.");
         [alert setMessageText:@"Xcode command line tools are required for signing the modified rcd file.  Without signing OS X will keep complaining that the signature is invalid.\n\nWould you like to install Xcode command line tools?"];
         [alert addButtonWithTitle:@"Yes, install Xcode command line tools"];
         [alert addButtonWithTitle:@"No, I don't want to patch"];
         if ([alert runModal] == NSAlertSecondButtonReturn) {
+            DDLogInfo(@"Use decided not to install. Aborting patch.");
             return;
         } else {
+            DDLogInfo(@"Use decided to install. Calling installation function...");
             [self installXcodeCommandLineTools];
             return;
         }
     }
+    DDLogInfo(@"Xcode command line tools are installed.");
     
-    [alert setMessageText:@"You will now be asked for administrator password **twice**, since rcd file is in a privileged location this access is necessary to apply the patch."];
+    [alert setMessageText:@"You will now be asked for administrator password **a few times**.  This access is necessary because the file to patch is in a privileged location."];
     [alert addButtonWithTitle:@"OK"];
     [alert addButtonWithTitle:@"Cancel"];
     if ([alert runModal] == NSAlertSecondButtonReturn) {
+        DDLogInfo(@"User decided not to proceed after showing that they will be asked for administrator password several times.");
         return;
     }
 
-    NSError * error;
+    NSError * error = nil;
+    BOOL filePatched = false;
     @try {
-        [_patcher patchFile:error];
+        DDLogInfo(@"Requesting patch...");
+        filePatched = [_patcher patchFile:&error];
     }
     @catch (NSException *exception) {
+        DDLogError(@"Problem patching file: %@", [exception description]);
         NSAlert * alert = [[NSAlert alloc] init];
         [alert setMessageText:@"Unexpected Error"];
         [alert setInformativeText:[exception description]];
         [alert addButtonWithTitle:@"OK"];
         [alert runModal];
-        NSLog(@"Problem running task: %@", [exception description]);
         [self refreshView];
         return;
     }
 
     if (error != NULL) {
-        NSLog(@"%@", [error description]);
+        DDLogError(@"Patcher returned error...\n%@", [error description]);
+        [[NSAlert alertWithError:error] runModal];
         [self refreshView];
         return;
     }
     
-    // File was patched successfully.
     [self refreshView];
-    alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Patch Applied"];
-    [alert setInformativeText:@"The patch was applied successfully.\n\nYou only have to do this once per Mac OS X upgrade."];
-    [alert addButtonWithTitle:@"Excellent, take me to the project website now!"];
-    [alert addButtonWithTitle:@"Excellent, I am all set!"];
-    if ([alert runModal] == NSAlertFirstButtonReturn) {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.thebitguru.com/projects/iTunesPatch?utm_source=guiapp&utm_medium=guiapp&utm_campaign=successful-patch"]];
+    
+    // File was patched successfully.
+    if (filePatched) {
+        alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Patch Applied"];
+        [alert setInformativeText:@"The patch was applied successfully. You only have to do this once per OS X upgrade.\n\nYou can try by pressing the Play/Pause button. iTunes should no longer launch when you press this button.\n\nYou should not have to restart your system, but in case if it looks like this did not change the behavior then please restart your system before reporting it as an issue."];
+        [alert addButtonWithTitle:@"Excellent, take me to the project website now!"];
+        [alert addButtonWithTitle:@"Excellent, I am all set!"];
+        if ([alert runModal] == NSAlertFirstButtonReturn) {
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.thebitguru.com/projects/iTunesPatch?utm_source=guiapp&utm_medium=guiapp&utm_campaign=successful-patch"]];
+        }
     }
 }
 

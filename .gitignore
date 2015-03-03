@@ -1,1 +1,5 @@
 *.swp
+*.swo
+rcd/**
+package/**
+**/thebitguru.xcuserdatad/**
