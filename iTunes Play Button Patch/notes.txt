@@ -1,5 +1,3 @@
-* Fixing icons.
-* Removing notes.txt from the build.
 
 ------------------------------------------
 TODO:

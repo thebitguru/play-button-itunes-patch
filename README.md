@@ -1,23 +1,15 @@
 Play Button iTunes patch
 ========================
 
-You can download the compressed patch at <http://www.thebitguru.com/projects/iTunesPatch>.
+[Official Website](http://www.thebitguru.com/projects/iTunesPatch)
 
 Overview
 --------
-This is a patch for removing the default OS X behavior of _always_ starting
-iTunes when the play button on the keyboard is pressed.  This feature can be
-useful for a lot of users, but it can also be annoying if you are using VLC or
-other similar programs that support the media keys.
+This is a patch for removing the default OS X behavior of always starting iTunes when the play button on the keyboard is pressed. This feature can be useful for a lot of users, but it can also be annoying if you are using VLC, Nightingale or other similar programs that support the media keys.
 
-The Patch script will patch the Remote Control Daemon to prevent it from starting
-iTunes whenever you press the play button on the keyboard or an external remote
-control. This will only prevent iTunes from starting, all other functions (like
-play/pause while iTunes is _running_) will continue to work as before.
+The application will patch the Remote Control Daemon to prevent it from starting iTunes whenever you press the play button on the keyboard or an external remote control. This will only prevent iTunes from starting, all other functions (like play/pause while iTunes is running) will continue to work as before. The original file is backed up in case you would like to restore the original functionality.
 
-Lastly, this program will backup the original file in case if you would like to
-restore the original functionality.
-
+![Screenshot](Images/Screenshot-1.0.png "Screenshot")
 
 
 General Information
@@ -27,6 +19,10 @@ Author: Farhan Ahmad (<http://www.thebitguru.com/projects/iTunesPatch>)
 
 Change Log
 ----------
+    2015-03-02, fa: Farhan Ahmad
+     * Published the all new GUI application!
+     * Version changed to 1.0
+
     2014-01-19, fa: Farhan Ahmad
      * Added the '-KILL' to killall command because rcd doesn't seem to respect SIGTERM
        anymore.  Thanks for @quicksnap (https://github.com/quicksnap) for helping
