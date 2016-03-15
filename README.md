@@ -11,6 +11,11 @@ The application will patch the Remote Control Daemon to prevent it from starting
 
 ![Screenshot](Images/Screenshot-1.0.png "Screenshot")
 
+OS X El Capitan Compatibility
+--------
+
+This patch works by modifying a system file (rcd). With the new System Integrity Protection (SIP) functionality introduced in El Capitan you have to take additional steps to temporarily disable SIP. Hopefully I will get some time soon to update the binary to guide the user through this, but for now please follow the instructions documented on the [project page](http://www.thebitguru.com/projects/iTunesPatch).
+
 
 General Information
 -------------------
