@@ -75,7 +75,7 @@
 }
 
 - (void) reloadFiles {
-    DDLogDebug(@"Loading files and determing file statuses...");
+    DDLogDebug(@"Loading files and determining file statuses...");
     [_files removeAllObjects];
     [_backupFiles removeAllObjects];
     
