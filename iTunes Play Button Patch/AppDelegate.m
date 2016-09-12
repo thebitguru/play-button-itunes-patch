@@ -369,10 +369,10 @@
         [alert addButtonWithTitle:@"Yes, install Xcode command line tools"];
         [alert addButtonWithTitle:@"No, I don't want to patch"];
         if ([alert runModal] == NSAlertSecondButtonReturn) {
-            DDLogInfo(@"Use decided not to install. Aborting patch.");
+            DDLogInfo(@"User decided not to install. Aborting patch.");
             return;
         } else {
-            DDLogInfo(@"Use decided to install. Calling installation function...");
+            DDLogInfo(@"User decided to install. Calling installation function...");
             [self installXcodeCommandLineTools];
             return;
         }
