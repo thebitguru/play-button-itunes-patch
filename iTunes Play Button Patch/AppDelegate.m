@@ -359,7 +359,7 @@
 }
 
 - (IBAction)patchButtonClicked:(id)sender {
-    DDLogInfo(@"Use requested to patch...");
+    DDLogInfo(@"User requested to patch...");
     
     NSAlert * alert = [[NSAlert alloc] init];
     // Only do this if not already installed.
