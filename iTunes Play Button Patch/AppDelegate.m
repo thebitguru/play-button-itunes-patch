@@ -10,9 +10,13 @@
 #import "Patcher.h"
 #import "RcdFile.h"
 #import "AboutWindowController.h"
+#import "PatchedWindowController.h"
+#import "ErrorWindowController.h"
 #import "GradientView.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "CustomLogFormatter.h"
+#import "Constants.h"
+
 @import QuartzCore;
 
 
@@ -27,11 +31,15 @@
 @property (weak) IBOutlet NSImageView *logoImage;
 @property (weak) IBOutlet GradientView *topBackground;
 @property (weak) IBOutlet NSTextField *commandLineToolsStatus;
+@property (weak) IBOutlet NSTextField *systemIntegrityProtectionStatus;
 @property (weak) IBOutlet NSButton *installXcodeCommandLineToolsButton;
 
 - (IBAction)installXcodeCommandLineToolsButtonClicked:(id)sender;
+- (IBAction)learnMoreAboutSIPButtonClicked:(id)sender;
 - (IBAction)showInFinderMenu:(id)sender;
 - (IBAction)aboutMenuItemClicked:(id)sender;
+- (IBAction)showPatchedWindowMenuItemClicked:(id)sender;
+- (IBAction)showErrorWindowMenuItemClicked:(id)sender;
 - (IBAction)refreshButtonClicked:(id)sender;
 - (IBAction)restoreFromBackupButtonClicked:(id)sender;
 - (IBAction)patchButtonClicked:(id)sender;
@@ -42,6 +50,8 @@
 @implementation AppDelegate {
     Patcher * _patcher;
     AboutWindowController * _aboutWindowController;
+    PatchedWindowController * _patchedWindowController;
+    ErrorWindowController * _errorWindowController;
     NSFileCoordinator * _fileCoordinator;
     NSDateFormatter * _dateFormatter;
     BOOL _lastCommandLineToolStatus;
@@ -64,9 +74,9 @@
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     DDLogInfo(@"--------------- New session - Version %@ ---------------", version);
     DDLogInfo(@"Log file directory: %@", [[_fileLogger logFileManager] logsDirectory]);
-    [_window setTitle:[NSString stringWithFormat:@"%@ - %@", [_window title], version]];
+    [_window setTitle:[NSString stringWithFormat:@"%@ - Version %@", [_window title], version]];
     [_window setMovableByWindowBackground:YES];
-    [_titleTextField setStringValue:[NSString stringWithFormat:@"%@ - %@", [_titleTextField stringValue], version]];
+    [_titleTextField setStringValue:[NSString stringWithFormat:@"%@ - Version %@", [_titleTextField stringValue], version]];
     
     _dateFormatter = [[NSDateFormatter alloc] init];
     //    [_dateFormatter setDateFormat:@"MM/dd/Y h:mm:ss a"];
@@ -85,6 +95,7 @@
     _patcher = [[Patcher alloc] init];
     
     [self refreshView];
+    [_window makeKeyAndOrderFront:self];
     // TODO: Figure out how to hookup the directory watch.
 }
 
@@ -109,7 +120,15 @@
     [self installXcodeCommandLineTools];
 }
 
+- (IBAction)learnMoreAboutSIPButtonClicked:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:URL_SIP_INFO]];
+}
+
 - (IBAction)reportAnIssueClicked:(id)sender {
+    [self reportAnIssue];
+}
+
+- (void) reportAnIssue {
     NSAlert * alert = [[NSAlert alloc] init];
     [alert setMessageText:@"You can report issues on the github project page (ideal, but requires a github account), or directly through email.  Which would you prefer?"];
     [alert addButtonWithTitle:@"Github"];
@@ -120,7 +139,7 @@
     NSString * url = nil;
     NSModalResponse response = [alert runModal];
     if (response == NSAlertFirstButtonReturn) {   // github
-        message = @"Opening the log file directory and the github new issue page.  Please submit a new issue describing your situation and paste the text from the log file.";
+        message = @"Now opening the log file directory and the github new issue page.  Please submit a new issue describing your situation and paste the text from the log file.";
         url = @"https://github.com/thebitguru/play-button-itunes-patch/issues/new";
     } else if (response == NSAlertSecondButtonReturn) {  // email.
         message = @"Opening the log file directory and triggering email.  Please attach the log files to your email.\n\nIn case if this does not launch your email application, please manually send an email to farhan@thebitguru.com.";
@@ -223,6 +242,20 @@
     } else {
         [_commandLineToolsStatus setStringValue:@"Not installed."];
         [_installXcodeCommandLineToolsButton setToolTip:@"Click to install..."];
+    }
+    
+    // SIP status requires a restart so no need to animate it's
+    // change (since the app will have to be relaunched afterward).
+    switch ([_patcher SystemIntegrityProtectionStatus]) {
+        case SIPStatusEnabled:
+            [_systemIntegrityProtectionStatus setStringValue:@"Enabled."];
+            break;
+        case SIPStatusDisabled:
+            [_systemIntegrityProtectionStatus setStringValue:@"Disabled."];
+            break;
+        case SIPStatusCSRUTILNotFound:
+            [_systemIntegrityProtectionStatus setStringValue:@"Not applicable to this version of the operating system."];
+            break;
     }
     
 //    CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
@@ -379,6 +412,22 @@
     }
     DDLogInfo(@"Xcode command line tools are installed.");
     
+    if ([_patcher SystemIntegrityProtectionStatus] == SIPStatusEnabled) {
+        DDLogInfo(@"SIP is enabled, instructing user to disable it first..");
+        NSAlert * sipAlert = [[NSAlert alloc] init];
+        [sipAlert setMessageText:@"System Integrity Protection must be disabled"];
+        [sipAlert setInformativeText:@"This patch works by modifying a system file (rcd). With the new System Integrity Protection (SIP) functionality introduced in El Capitan you have to take additional steps to temporarily disable SIP."];
+        [sipAlert addButtonWithTitle:@"Learn More..."];
+        [sipAlert addButtonWithTitle:@"Cancel"];
+        if ([sipAlert runModal] == NSAlertFirstButtonReturn) {
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:URL_SIP_INFO]];
+            DDLogInfo(@"User clicked learn more button.");
+        } else {
+            DDLogInfo(@"User clicked cancel.");
+        }
+        return;
+    }
+    
     [alert setMessageText:@"You will now be asked for administrator password **a few times**.  This access is necessary because the file to patch is in a privileged location."];
     [alert addButtonWithTitle:@"OK"];
     [alert addButtonWithTitle:@"Cancel"];
@@ -395,18 +444,14 @@
     }
     @catch (NSException *exception) {
         DDLogError(@"Problem patching file: %@", [exception description]);
-        NSAlert * alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Unexpected Error"];
-        [alert setInformativeText:[exception description]];
-        [alert addButtonWithTitle:@"OK"];
-        [alert runModal];
+        [self showError:[exception description]];
         [self refreshView];
         return;
     }
 
     if (error != NULL) {
         DDLogError(@"Patcher returned error...\n%@", [error description]);
-        [[NSAlert alertWithError:error] runModal];
+        [self showError:[error description]];
         [self refreshView];
         return;
     }
@@ -415,14 +460,7 @@
     
     // File was patched successfully.
     if (filePatched) {
-        alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Patch Applied"];
-        [alert setInformativeText:@"The patch was applied successfully. You only have to do this once per OS X upgrade.\n\nYou can try by pressing the Play/Pause button. iTunes should no longer launch when you press this button.\n\nYou should not have to restart your system, but in case if it looks like this did not change the behavior then please restart your system before reporting it as an issue."];
-        [alert addButtonWithTitle:@"Excellent, take me to the project website now!"];
-        [alert addButtonWithTitle:@"Excellent, I am all set!"];
-        if ([alert runModal] == NSAlertFirstButtonReturn) {
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.thebitguru.com/projects/iTunesPatch?utm_source=guiapp&utm_medium=guiapp&utm_campaign=successful-patch"]];
-        }
+        [self showPatchedSuccessfully];
     }
 }
 
@@ -431,6 +469,41 @@
         _aboutWindowController = [[AboutWindowController alloc] initWithWindowNibName:@"AboutWindow"];
     }
     [[NSApplication sharedApplication] runModalForWindow:[_aboutWindowController window]];
+}
+
+- (IBAction)showPatchedWindowMenuItemClicked:(id)sender {
+    [self showPatchedSuccessfully];
+}
+
+- (void) showPatchedSuccessfully {
+    _patchedWindowController = [[PatchedWindowController alloc] initWithWindowNibName:@"PatchedWindowController"];
+    [self.window beginSheet:_patchedWindowController.window completionHandler:nil];
+}
+
+- (void) showError: (NSString *)errorMessage {
+    DDLogDebug(@"Showing error window with message: %@", errorMessage);
+    _errorWindowController = [[ErrorWindowController alloc] initWithWindowNibName:@"ErrorWindowController"];
+    [_errorWindowController setErrorMessage:errorMessage];
+    
+    [self.window beginSheet:_errorWindowController.window completionHandler:^(NSModalResponse returnCode) {
+        switch (returnCode) {
+            case TriggerCommandLineToolsInstall:
+                [self installXcodeCommandLineTools];
+                break;
+                
+            case TriggerReportIssue:
+                [self reportAnIssue];
+                break;
+                
+            default:
+                DDLogError(@"Unexpected return code: %ld", (long)returnCode);
+                break;
+        }
+    }];
+}
+
+- (IBAction)showErrorWindowMenuItemClicked:(id)sender {
+    [self showError:@"Test message!"];
 }
 
 - (IBAction)refreshButtonClicked:(id)sender {

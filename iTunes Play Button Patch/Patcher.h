@@ -14,10 +14,17 @@ static NSString * const RCD_PATH = @"/System/Library/CoreServices/rcd.app/Conten
 
 @interface Patcher : NSObject
 
+typedef NS_ENUM(NSInteger, SIPStatus) {
+    SIPStatusEnabled,
+    SIPStatusDisabled,
+    SIPStatusCSRUTILNotFound
+};
+
 @property NSMutableArray* files;
 @property NSMutableArray * backupFiles;
 @property BOOL isMainFilePatched;
 @property BOOL areCommandLineToolsInstalled;
+@property SIPStatus SystemIntegrityProtectionStatus;
 
 - (id) init;
 - (BOOL) isFilePatched: (NSString *) filePath;

@@ -37,7 +37,7 @@
 
 - (void)didAddToLogger:(id <DDLogger>)logger {
     loggerCount++;
-    NSAssert(loggerCount <= 1, @"This logger isn't thread-safe");
+    NSAssert(loggerCount <= 1, @"This logger is not thread-safe");
 }
 
 - (void)willRemoveFromLogger:(id <DDLogger>)logger {

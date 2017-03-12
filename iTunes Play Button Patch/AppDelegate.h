@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+static NSString * const URL_SIP_INFO = @"http://thebitguru.com/projects/itunes-patch#sip-info";
+
+
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource, NSWindowDelegate, NSMenuDelegate>
 
 @end

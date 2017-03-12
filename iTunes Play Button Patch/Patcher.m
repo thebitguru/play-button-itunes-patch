@@ -15,6 +15,7 @@
     NSData * _FIND_COMMAND_DATA;
     NSData * _REPLACE_COMMAND_DATA;
     NSFileManager * _fileManager;
+    SIPStatus _SystemIntegrityProtectionStatus;
 }
 
 - (id) init {
@@ -46,6 +47,40 @@
 - (BOOL) isFilePatched: (NSString *) filePath {
     NSData * fileData = [_fileManager contentsAtPath:filePath];
     return [fileData rangeOfData:_FIND_COMMAND_DATA options:kNilOptions range:NSMakeRange(0, [fileData length])].location == NSNotFound;
+}
+
+// Sets the System Integrity Protection Status.
+- (void) setSIPStatus {
+    // First check to see if csrutil exists.
+    if (![[NSFileManager defaultManager] fileExistsAtPath:@"/usr/bin/csrutil"]) {
+        DDLogDebug(@"csrutil not found at /usr/bin/csrutil.");
+        _SystemIntegrityProtectionStatus = SIPStatusCSRUTILNotFound;
+        return;
+    }
+    DDLogInfo(@"/usr/bin/csrutil found.");
+    
+    // If csrutil is found then see if SIP is actually enabled.
+    NSPipe *pipe = [NSPipe pipe];
+    NSFileHandle *file = pipe.fileHandleForReading;
+    
+    NSTask *task = [[NSTask alloc] init];
+    task.launchPath = @"/usr/bin/csrutil";
+    task.arguments = @[@"status"];
+    task.standardOutput = pipe;
+    [task launch];
+    NSData *data = [file readDataToEndOfFile];
+    [file closeFile];
+    
+    NSString *processOutput = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    DDLogDebug(@"/usr/bin/csrutil status: %@", processOutput);
+    
+    if ([processOutput containsString:@": enabled"]) {
+        DDLogWarn(@"SIP is enabled.");
+        _SystemIntegrityProtectionStatus = SIPStatusEnabled;
+    } else {
+        DDLogWarn(@"SIP is disabled.");
+        _SystemIntegrityProtectionStatus = SIPStatusDisabled;
+    }
 }
 
 // Sets
@@ -144,6 +179,7 @@
     }
     
     [self setCommandLineToolStatus];
+    [self setSIPStatus];
 }
 
 
@@ -262,7 +298,7 @@
     AuthorizationRights rights = {1, &right};
     AuthorizationFlags flags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed | kAuthorizationFlagPreAuthorize | kAuthorizationFlagExtendRights;
     if (AuthorizationCopyRights(authRef, &rights, NULL, flags, NULL) != errAuthorizationSuccess) {      // User canceled.
-        DDLogInfo(@"User cancelled authorization.");
+        DDLogInfo(@"User canceled authorization.");
         return false;
     }
     
@@ -308,14 +344,14 @@
     if (!success) {
         // Special case that can be ignored.
         if ([processErrorDescription isEqualToString:@"No matching processes were found"]) {
-            DDLogInfo(@"killall returned 'No matching porcesses were found'");
+            DDLogInfo(@"killall returned 'No matching processes were found'");
         } else {
             DDLogError(@"runProcessAsAdministrator returned false: %@", processErrorDescription);
             [NSException raise:@"killall_failed" format:@"Failed to kill all rcd processes."];
         }
     }
     
-    DDLogInfo(@"Restarting rcd process as current user.");
+    DDLogInfo(@"Restarting the rcd process as the current user.");
     [NSTask launchedTaskWithLaunchPath:[NSString stringWithFormat:@"%@/rcd", RCD_PATH] arguments:[[NSArray alloc] init]];
     
     return success;

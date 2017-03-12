@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		771C554D1E6D31EB00477FD8 /* PatchedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771C554B1E6D31EB00477FD8 /* PatchedWindowController.m */; };
+		771C554E1E6D31EB00477FD8 /* PatchedWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 771C554C1E6D31EB00477FD8 /* PatchedWindowController.xib */; };
 		771DC40C1AA2A9BA0015B9D3 /* CustomLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 771DC40B1AA2A9BA0015B9D3 /* CustomLogFormatter.m */; };
 		7779580E1A158F9300F04458 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7779580D1A158F9300F04458 /* AboutWindowController.m */; };
 		777958111A159ADC00F04458 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 777958101A159ADC00F04458 /* Credits.html */; };
@@ -21,6 +23,9 @@
 		77D3D37A1A17C05200E427B4 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D3D3791A17C05200E427B4 /* GradientView.m */; };
 		77D3D37C1A17CAA300E427B4 /* logo-large.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D3D37B1A17CAA300E427B4 /* logo-large.png */; };
 		77D77A2C1A158B8C0053880F /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D77A2B1A158B8C0053880F /* AboutWindow.xib */; };
+		77F7F1721E75CA6E006DED8A /* ErrorWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F7F1701E75CA6E006DED8A /* ErrorWindowController.m */; };
+		77F7F1731E75CA6E006DED8A /* ErrorWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77F7F1711E75CA6E006DED8A /* ErrorWindowController.xib */; };
+		77F7F1781E75D8F4006DED8A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F7F1751E75D4F1006DED8A /* Constants.m */; };
 		CF8267A0537EDD6080FC5E99 /* libPods-Play Button iTunes Patch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A750E233DAEAFD38EBABF80F /* libPods-Play Button iTunes Patch.a */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +42,9 @@
 /* Begin PBXFileReference section */
 		2C6BE9E333C54DE558D5C7B8 /* Pods-Play Button iTunes Patch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play Button iTunes Patch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Play Button iTunes Patch/Pods-Play Button iTunes Patch.release.xcconfig"; sourceTree = "<group>"; };
 		4F8F7326CC433ABE3044890D /* Pods-Play Button iTunes Patch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play Button iTunes Patch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Play Button iTunes Patch/Pods-Play Button iTunes Patch.debug.xcconfig"; sourceTree = "<group>"; };
+		771C554A1E6D31EB00477FD8 /* PatchedWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchedWindowController.h; sourceTree = "<group>"; };
+		771C554B1E6D31EB00477FD8 /* PatchedWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatchedWindowController.m; sourceTree = "<group>"; };
+		771C554C1E6D31EB00477FD8 /* PatchedWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatchedWindowController.xib; sourceTree = "<group>"; };
 		771DC40A1AA2A9BA0015B9D3 /* CustomLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLogFormatter.h; sourceTree = "<group>"; };
 		771DC40B1AA2A9BA0015B9D3 /* CustomLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLogFormatter.m; sourceTree = "<group>"; };
 		772F9ED41A7DC55700C7B543 /* PlayButtoniTunesPatch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PlayButtoniTunesPatch-Prefix.pch"; path = "iTunes Play Button Patch/PlayButtoniTunesPatch-Prefix.pch"; sourceTree = "<group>"; };
@@ -63,6 +71,11 @@
 		77D3D3791A17C05200E427B4 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		77D3D37B1A17CAA300E427B4 /* logo-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-large.png"; sourceTree = "<group>"; };
 		77D77A2B1A158B8C0053880F /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
+		77F7F16F1E75CA6E006DED8A /* ErrorWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorWindowController.h; sourceTree = "<group>"; };
+		77F7F1701E75CA6E006DED8A /* ErrorWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorWindowController.m; sourceTree = "<group>"; };
+		77F7F1711E75CA6E006DED8A /* ErrorWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorWindowController.xib; sourceTree = "<group>"; };
+		77F7F1751E75D4F1006DED8A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		77F7F1771E75D534006DED8A /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		77FAC0761A53661E00D23FCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		A750E233DAEAFD38EBABF80F /* libPods-Play Button iTunes Patch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Play Button iTunes Patch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,8 +169,13 @@
 				771DC4091AA2A9860015B9D3 /* Logging */,
 				7779580F1A158FA900F04458 /* About Window */,
 				778FE4CE1A144EAC00A3CE34 /* MainMenu.xib */,
+				77F7F1771E75D534006DED8A /* Constants.h */,
+				77F7F1751E75D4F1006DED8A /* Constants.m */,
 				778FE4C71A144EAC00A3CE34 /* AppDelegate.h */,
 				778FE4C81A144EAC00A3CE34 /* AppDelegate.m */,
+				77F7F16F1E75CA6E006DED8A /* ErrorWindowController.h */,
+				77F7F1701E75CA6E006DED8A /* ErrorWindowController.m */,
+				77F7F1711E75CA6E006DED8A /* ErrorWindowController.xib */,
 				778FE4E51A14530A00A3CE34 /* Patcher.h */,
 				778FE4E61A14530A00A3CE34 /* Patcher.m */,
 				778FE4E81A14736400A3CE34 /* RcdFile.h */,
@@ -168,6 +186,9 @@
 				777958061A158CC300F04458 /* Frameworks */,
 				778FE4C51A144EAC00A3CE34 /* Supporting Files */,
 				7769FE461A47A357008971EB /* notes.txt */,
+				771C554A1E6D31EB00477FD8 /* PatchedWindowController.h */,
+				771C554B1E6D31EB00477FD8 /* PatchedWindowController.m */,
+				771C554C1E6D31EB00477FD8 /* PatchedWindowController.xib */,
 			);
 			path = "iTunes Play Button Patch";
 			sourceTree = "<group>";
@@ -247,7 +268,7 @@
 		778FE4BA1A144EAC00A3CE34 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = thebitguru;
 				TargetAttributes = {
 					778FE4C11A144EAC00A3CE34 = {
@@ -283,10 +304,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77F7F1731E75CA6E006DED8A /* ErrorWindowController.xib in Resources */,
 				778FE4CD1A144EAC00A3CE34 /* Images.xcassets in Resources */,
 				77D3D3771A17BD0F00E427B4 /* logo.png in Resources */,
 				777958111A159ADC00F04458 /* Credits.html in Resources */,
 				778FE4D01A144EAC00A3CE34 /* MainMenu.xib in Resources */,
+				771C554E1E6D31EB00477FD8 /* PatchedWindowController.xib in Resources */,
 				77D77A2C1A158B8C0053880F /* AboutWindow.xib in Resources */,
 				77D3D37C1A17CAA300E427B4 /* logo-large.png in Resources */,
 			);
@@ -339,12 +362,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77F7F1781E75D8F4006DED8A /* Constants.m in Sources */,
 				771DC40C1AA2A9BA0015B9D3 /* CustomLogFormatter.m in Sources */,
+				771C554D1E6D31EB00477FD8 /* PatchedWindowController.m in Sources */,
 				778FE4E71A14530A00A3CE34 /* Patcher.m in Sources */,
 				7779580E1A158F9300F04458 /* AboutWindowController.m in Sources */,
 				778FE4EA1A14736400A3CE34 /* RcdFile.m in Sources */,
 				778FE4CB1A144EAC00A3CE34 /* main.m in Sources */,
 				77D3D37A1A17C05200E427B4 /* GradientView.m in Sources */,
+				77F7F1721E75CA6E006DED8A /* ErrorWindowController.m in Sources */,
 				778FE4C91A144EAC00A3CE34 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,15 +419,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -434,8 +464,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -444,6 +476,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -466,14 +499,16 @@
 					"$(inherited)",
 					"./**",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTunes Play Button Patch/PlayButtoniTunesPatch-Prefix.pch";
 				INFOPLIST_FILE = "iTunes Play Button Patch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thebitguru.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Play Button iTunes Patch";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -487,13 +522,15 @@
 					"$(inherited)",
 					"./**",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTunes Play Button Patch/PlayButtoniTunesPatch-Prefix.pch";
 				INFOPLIST_FILE = "iTunes Play Button Patch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thebitguru.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Play Button iTunes Patch";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -512,6 +549,7 @@
 				);
 				INFOPLIST_FILE = "iTunes Play Button PatchTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thebitguru.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Play Button iTunes PatchTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunes Play Button Patch.app/Contents/MacOS/iTunes Play Button Patch";
 			};
@@ -528,6 +566,7 @@
 				);
 				INFOPLIST_FILE = "iTunes Play Button PatchTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thebitguru.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Play Button iTunes PatchTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTunes Play Button Patch.app/Contents/MacOS/iTunes Play Button Patch";
 			};
