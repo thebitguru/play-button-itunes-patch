@@ -3,6 +3,10 @@ Play Button iTunes patch
 
 [Official Website](http://www.thebitguru.com/projects/iTunesPatch)
 
+Recent macOS Support & End of Life
+--------
+Please note that this patch does not work on macOS High Sierra and later versions.  Based on my research it seems that macOS now has good support to address the issue that this project was initially intended for so most of the modern media players now are able to support media keys natively.  Given this, and my low availability lately, I am considering archiving this project.  Please see [this issue](https://github.com/thebitguru/play-button-itunes-patch/issues/46) for the current status.  I am open to accepting pull requests and new maintainers.
+
 Overview
 --------
 This is a patch for removing the default OS X behavior of always starting iTunes when the play button on the keyboard is pressed. This feature can be useful for a lot of users, but it can also be annoying if you are using VLC, Nightingale or other similar programs that support the media keys.
